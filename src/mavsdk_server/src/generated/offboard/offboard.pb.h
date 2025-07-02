@@ -69,6 +69,9 @@ extern ActuatorControlGroupDefaultTypeInternal _ActuatorControlGroup_default_ins
 class Attitude;
 struct AttitudeDefaultTypeInternal;
 extern AttitudeDefaultTypeInternal _Attitude_default_instance_;
+class AttitudeQuaternion;
+struct AttitudeQuaternionDefaultTypeInternal;
+extern AttitudeQuaternionDefaultTypeInternal _AttitudeQuaternion_default_instance_;
 class AttitudeRate;
 struct AttitudeRateDefaultTypeInternal;
 extern AttitudeRateDefaultTypeInternal _AttitudeRate_default_instance_;
@@ -99,6 +102,12 @@ extern SetActuatorControlRequestDefaultTypeInternal _SetActuatorControlRequest_d
 class SetActuatorControlResponse;
 struct SetActuatorControlResponseDefaultTypeInternal;
 extern SetActuatorControlResponseDefaultTypeInternal _SetActuatorControlResponse_default_instance_;
+class SetAttitudeQuaternionRequest;
+struct SetAttitudeQuaternionRequestDefaultTypeInternal;
+extern SetAttitudeQuaternionRequestDefaultTypeInternal _SetAttitudeQuaternionRequest_default_instance_;
+class SetAttitudeQuaternionResponse;
+struct SetAttitudeQuaternionResponseDefaultTypeInternal;
+extern SetAttitudeQuaternionResponseDefaultTypeInternal _SetAttitudeQuaternionResponse_default_instance_;
 class SetAttitudeRateRequest;
 struct SetAttitudeRateRequestDefaultTypeInternal;
 extern SetAttitudeRateRequestDefaultTypeInternal _SetAttitudeRateRequest_default_instance_;
@@ -316,7 +325,7 @@ class VelocityNedYaw final
     return reinterpret_cast<const VelocityNedYaw*>(
         &_VelocityNedYaw_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 33;
+  static constexpr int kIndexInFileMessages = 36;
   friend void swap(VelocityNedYaw& a, VelocityNedYaw& b) { a.Swap(&b); }
   inline void Swap(VelocityNedYaw* other) {
     if (other == this) return;
@@ -543,7 +552,7 @@ class VelocityBodyYawspeed final
     return reinterpret_cast<const VelocityBodyYawspeed*>(
         &_VelocityBodyYawspeed_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 32;
+  static constexpr int kIndexInFileMessages = 35;
   friend void swap(VelocityBodyYawspeed& a, VelocityBodyYawspeed& b) { a.Swap(&b); }
   inline void Swap(VelocityBodyYawspeed* other) {
     if (other == this) return;
@@ -1062,7 +1071,7 @@ class PositionNedYaw final
     return reinterpret_cast<const PositionNedYaw*>(
         &_PositionNedYaw_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 30;
+  static constexpr int kIndexInFileMessages = 33;
   friend void swap(PositionNedYaw& a, PositionNedYaw& b) { a.Swap(&b); }
   inline void Swap(PositionNedYaw* other) {
     if (other == this) return;
@@ -1289,7 +1298,7 @@ class PositionGlobalYaw final
     return reinterpret_cast<const PositionGlobalYaw*>(
         &_PositionGlobalYaw_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 31;
+  static constexpr int kIndexInFileMessages = 34;
   friend void swap(PositionGlobalYaw& a, PositionGlobalYaw& b) { a.Swap(&b); }
   inline void Swap(PositionGlobalYaw* other) {
     if (other == this) return;
@@ -1548,7 +1557,7 @@ class OffboardResult final
     return reinterpret_cast<const OffboardResult*>(
         &_OffboardResult_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 35;
+  static constexpr int kIndexInFileMessages = 38;
   friend void swap(OffboardResult& a, OffboardResult& b) { a.Swap(&b); }
   inline void Swap(OffboardResult* other) {
     if (other == this) return;
@@ -2120,7 +2129,7 @@ class AttitudeRate final
     return reinterpret_cast<const AttitudeRate*>(
         &_AttitudeRate_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 29;
+  static constexpr int kIndexInFileMessages = 32;
   friend void swap(AttitudeRate& a, AttitudeRate& b) { a.Swap(&b); }
   inline void Swap(AttitudeRate* other) {
     if (other == this) return;
@@ -2287,6 +2296,245 @@ class AttitudeRate final
 };
 // -------------------------------------------------------------------
 
+class AttitudeQuaternion final
+    : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:mavsdk.rpc.offboard.AttitudeQuaternion) */ {
+ public:
+  inline AttitudeQuaternion() : AttitudeQuaternion(nullptr) {}
+  ~AttitudeQuaternion() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(AttitudeQuaternion* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(AttitudeQuaternion));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR AttitudeQuaternion(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline AttitudeQuaternion(const AttitudeQuaternion& from) : AttitudeQuaternion(nullptr, from) {}
+  inline AttitudeQuaternion(AttitudeQuaternion&& from) noexcept
+      : AttitudeQuaternion(nullptr, std::move(from)) {}
+  inline AttitudeQuaternion& operator=(const AttitudeQuaternion& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline AttitudeQuaternion& operator=(AttitudeQuaternion&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const AttitudeQuaternion& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const AttitudeQuaternion* internal_default_instance() {
+    return reinterpret_cast<const AttitudeQuaternion*>(
+        &_AttitudeQuaternion_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 29;
+  friend void swap(AttitudeQuaternion& a, AttitudeQuaternion& b) { a.Swap(&b); }
+  inline void Swap(AttitudeQuaternion* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(AttitudeQuaternion* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  AttitudeQuaternion* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<AttitudeQuaternion>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const AttitudeQuaternion& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const AttitudeQuaternion& from) { AttitudeQuaternion::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(
+      ::google::protobuf::MessageLite& to_msg,
+      const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* _InternalSerialize(
+      const MessageLite& msg, ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(AttitudeQuaternion* other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "mavsdk.rpc.offboard.AttitudeQuaternion"; }
+
+ protected:
+  explicit AttitudeQuaternion(::google::protobuf::Arena* arena);
+  AttitudeQuaternion(::google::protobuf::Arena* arena, const AttitudeQuaternion& from);
+  AttitudeQuaternion(::google::protobuf::Arena* arena, AttitudeQuaternion&& from) noexcept
+      : AttitudeQuaternion(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kWFieldNumber = 1,
+    kXFieldNumber = 2,
+    kYFieldNumber = 3,
+    kZFieldNumber = 4,
+    kThrustValueFieldNumber = 5,
+  };
+  // float w = 1;
+  void clear_w() ;
+  float w() const;
+  void set_w(float value);
+
+  private:
+  float _internal_w() const;
+  void _internal_set_w(float value);
+
+  public:
+  // float x = 2;
+  void clear_x() ;
+  float x() const;
+  void set_x(float value);
+
+  private:
+  float _internal_x() const;
+  void _internal_set_x(float value);
+
+  public:
+  // float y = 3;
+  void clear_y() ;
+  float y() const;
+  void set_y(float value);
+
+  private:
+  float _internal_y() const;
+  void _internal_set_y(float value);
+
+  public:
+  // float z = 4;
+  void clear_z() ;
+  float z() const;
+  void set_z(float value);
+
+  private:
+  float _internal_z() const;
+  void _internal_set_z(float value);
+
+  public:
+  // float thrust_value = 5;
+  void clear_thrust_value() ;
+  float thrust_value() const;
+  void set_thrust_value(float value);
+
+  private:
+  float _internal_thrust_value() const;
+  void _internal_set_thrust_value(float value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:mavsdk.rpc.offboard.AttitudeQuaternion)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      3, 5, 0,
+      0, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const AttitudeQuaternion& from_msg);
+    float w_;
+    float x_;
+    float y_;
+    float z_;
+    float thrust_value_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_offboard_2foffboard_2eproto;
+};
+// -------------------------------------------------------------------
+
 class Attitude final
     : public ::google::protobuf::Message
 /* @@protoc_insertion_point(class_definition:mavsdk.rpc.offboard.Attitude) */ {
@@ -2347,7 +2595,7 @@ class Attitude final
     return reinterpret_cast<const Attitude*>(
         &_Attitude_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 26;
+  static constexpr int kIndexInFileMessages = 28;
   friend void swap(Attitude& a, Attitude& b) { a.Swap(&b); }
   inline void Swap(Attitude* other) {
     if (other == this) return;
@@ -2574,7 +2822,7 @@ class ActuatorControlGroup final
     return reinterpret_cast<const ActuatorControlGroup*>(
         &_ActuatorControlGroup_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 27;
+  static constexpr int kIndexInFileMessages = 30;
   friend void swap(ActuatorControlGroup& a, ActuatorControlGroup& b) { a.Swap(&b); }
   inline void Swap(ActuatorControlGroup* other) {
     if (other == this) return;
@@ -2773,7 +3021,7 @@ class AccelerationNed final
     return reinterpret_cast<const AccelerationNed*>(
         &_AccelerationNed_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 34;
+  static constexpr int kIndexInFileMessages = 37;
   friend void swap(AccelerationNed& a, AccelerationNed& b) { a.Swap(&b); }
   inline void Swap(AccelerationNed* other) {
     if (other == this) return;
@@ -3382,7 +3630,7 @@ class SetVelocityNedResponse final
     return reinterpret_cast<const SetVelocityNedResponse*>(
         &_SetVelocityNedResponse_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 19;
+  static constexpr int kIndexInFileMessages = 21;
   friend void swap(SetVelocityNedResponse& a, SetVelocityNedResponse& b) { a.Swap(&b); }
   inline void Swap(SetVelocityNedResponse* other) {
     if (other == this) return;
@@ -3579,7 +3827,7 @@ class SetVelocityNedRequest final
     return reinterpret_cast<const SetVelocityNedRequest*>(
         &_SetVelocityNedRequest_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 18;
+  static constexpr int kIndexInFileMessages = 20;
   friend void swap(SetVelocityNedRequest& a, SetVelocityNedRequest& b) { a.Swap(&b); }
   inline void Swap(SetVelocityNedRequest* other) {
     if (other == this) return;
@@ -3776,7 +4024,7 @@ class SetVelocityBodyResponse final
     return reinterpret_cast<const SetVelocityBodyResponse*>(
         &_SetVelocityBodyResponse_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 17;
+  static constexpr int kIndexInFileMessages = 19;
   friend void swap(SetVelocityBodyResponse& a, SetVelocityBodyResponse& b) { a.Swap(&b); }
   inline void Swap(SetVelocityBodyResponse* other) {
     if (other == this) return;
@@ -3973,7 +4221,7 @@ class SetVelocityBodyRequest final
     return reinterpret_cast<const SetVelocityBodyRequest*>(
         &_SetVelocityBodyRequest_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 16;
+  static constexpr int kIndexInFileMessages = 18;
   friend void swap(SetVelocityBodyRequest& a, SetVelocityBodyRequest& b) { a.Swap(&b); }
   inline void Swap(SetVelocityBodyRequest* other) {
     if (other == this) return;
@@ -4170,7 +4418,7 @@ class SetPositionVelocityNedResponse final
     return reinterpret_cast<const SetPositionVelocityNedResponse*>(
         &_SetPositionVelocityNedResponse_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 22;
+  static constexpr int kIndexInFileMessages = 24;
   friend void swap(SetPositionVelocityNedResponse& a, SetPositionVelocityNedResponse& b) { a.Swap(&b); }
   inline void Swap(SetPositionVelocityNedResponse* other) {
     if (other == this) return;
@@ -4367,7 +4615,7 @@ class SetPositionVelocityNedRequest final
     return reinterpret_cast<const SetPositionVelocityNedRequest*>(
         &_SetPositionVelocityNedRequest_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 20;
+  static constexpr int kIndexInFileMessages = 22;
   friend void swap(SetPositionVelocityNedRequest& a, SetPositionVelocityNedRequest& b) { a.Swap(&b); }
   inline void Swap(SetPositionVelocityNedRequest* other) {
     if (other == this) return;
@@ -4581,7 +4829,7 @@ class SetPositionVelocityAccelerationNedResponse final
     return reinterpret_cast<const SetPositionVelocityAccelerationNedResponse*>(
         &_SetPositionVelocityAccelerationNedResponse_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 23;
+  static constexpr int kIndexInFileMessages = 25;
   friend void swap(SetPositionVelocityAccelerationNedResponse& a, SetPositionVelocityAccelerationNedResponse& b) { a.Swap(&b); }
   inline void Swap(SetPositionVelocityAccelerationNedResponse* other) {
     if (other == this) return;
@@ -4778,7 +5026,7 @@ class SetPositionVelocityAccelerationNedRequest final
     return reinterpret_cast<const SetPositionVelocityAccelerationNedRequest*>(
         &_SetPositionVelocityAccelerationNedRequest_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 21;
+  static constexpr int kIndexInFileMessages = 23;
   friend void swap(SetPositionVelocityAccelerationNedRequest& a, SetPositionVelocityAccelerationNedRequest& b) { a.Swap(&b); }
   inline void Swap(SetPositionVelocityAccelerationNedRequest* other) {
     if (other == this) return;
@@ -5009,7 +5257,7 @@ class SetPositionNedResponse final
     return reinterpret_cast<const SetPositionNedResponse*>(
         &_SetPositionNedResponse_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 13;
+  static constexpr int kIndexInFileMessages = 15;
   friend void swap(SetPositionNedResponse& a, SetPositionNedResponse& b) { a.Swap(&b); }
   inline void Swap(SetPositionNedResponse* other) {
     if (other == this) return;
@@ -5206,7 +5454,7 @@ class SetPositionNedRequest final
     return reinterpret_cast<const SetPositionNedRequest*>(
         &_SetPositionNedRequest_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 12;
+  static constexpr int kIndexInFileMessages = 14;
   friend void swap(SetPositionNedRequest& a, SetPositionNedRequest& b) { a.Swap(&b); }
   inline void Swap(SetPositionNedRequest* other) {
     if (other == this) return;
@@ -5403,7 +5651,7 @@ class SetPositionGlobalResponse final
     return reinterpret_cast<const SetPositionGlobalResponse*>(
         &_SetPositionGlobalResponse_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 15;
+  static constexpr int kIndexInFileMessages = 17;
   friend void swap(SetPositionGlobalResponse& a, SetPositionGlobalResponse& b) { a.Swap(&b); }
   inline void Swap(SetPositionGlobalResponse* other) {
     if (other == this) return;
@@ -5600,7 +5848,7 @@ class SetPositionGlobalRequest final
     return reinterpret_cast<const SetPositionGlobalRequest*>(
         &_SetPositionGlobalRequest_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 14;
+  static constexpr int kIndexInFileMessages = 16;
   friend void swap(SetPositionGlobalRequest& a, SetPositionGlobalRequest& b) { a.Swap(&b); }
   inline void Swap(SetPositionGlobalRequest* other) {
     if (other == this) return;
@@ -6191,7 +6439,7 @@ class SetAttitudeRateResponse final
     return reinterpret_cast<const SetAttitudeRateResponse*>(
         &_SetAttitudeRateResponse_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 11;
+  static constexpr int kIndexInFileMessages = 13;
   friend void swap(SetAttitudeRateResponse& a, SetAttitudeRateResponse& b) { a.Swap(&b); }
   inline void Swap(SetAttitudeRateResponse* other) {
     if (other == this) return;
@@ -6388,7 +6636,7 @@ class SetAttitudeRateRequest final
     return reinterpret_cast<const SetAttitudeRateRequest*>(
         &_SetAttitudeRateRequest_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 10;
+  static constexpr int kIndexInFileMessages = 12;
   friend void swap(SetAttitudeRateRequest& a, SetAttitudeRateRequest& b) { a.Swap(&b); }
   inline void Swap(SetAttitudeRateRequest* other) {
     if (other == this) return;
@@ -6525,6 +6773,400 @@ class SetAttitudeRateRequest final
 };
 // -------------------------------------------------------------------
 
+class SetAttitudeQuaternionResponse final
+    : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:mavsdk.rpc.offboard.SetAttitudeQuaternionResponse) */ {
+ public:
+  inline SetAttitudeQuaternionResponse() : SetAttitudeQuaternionResponse(nullptr) {}
+  ~SetAttitudeQuaternionResponse() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(SetAttitudeQuaternionResponse* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(SetAttitudeQuaternionResponse));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR SetAttitudeQuaternionResponse(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline SetAttitudeQuaternionResponse(const SetAttitudeQuaternionResponse& from) : SetAttitudeQuaternionResponse(nullptr, from) {}
+  inline SetAttitudeQuaternionResponse(SetAttitudeQuaternionResponse&& from) noexcept
+      : SetAttitudeQuaternionResponse(nullptr, std::move(from)) {}
+  inline SetAttitudeQuaternionResponse& operator=(const SetAttitudeQuaternionResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline SetAttitudeQuaternionResponse& operator=(SetAttitudeQuaternionResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const SetAttitudeQuaternionResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const SetAttitudeQuaternionResponse* internal_default_instance() {
+    return reinterpret_cast<const SetAttitudeQuaternionResponse*>(
+        &_SetAttitudeQuaternionResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 9;
+  friend void swap(SetAttitudeQuaternionResponse& a, SetAttitudeQuaternionResponse& b) { a.Swap(&b); }
+  inline void Swap(SetAttitudeQuaternionResponse* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(SetAttitudeQuaternionResponse* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  SetAttitudeQuaternionResponse* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<SetAttitudeQuaternionResponse>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const SetAttitudeQuaternionResponse& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const SetAttitudeQuaternionResponse& from) { SetAttitudeQuaternionResponse::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(
+      ::google::protobuf::MessageLite& to_msg,
+      const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* _InternalSerialize(
+      const MessageLite& msg, ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(SetAttitudeQuaternionResponse* other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "mavsdk.rpc.offboard.SetAttitudeQuaternionResponse"; }
+
+ protected:
+  explicit SetAttitudeQuaternionResponse(::google::protobuf::Arena* arena);
+  SetAttitudeQuaternionResponse(::google::protobuf::Arena* arena, const SetAttitudeQuaternionResponse& from);
+  SetAttitudeQuaternionResponse(::google::protobuf::Arena* arena, SetAttitudeQuaternionResponse&& from) noexcept
+      : SetAttitudeQuaternionResponse(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kOffboardResultFieldNumber = 1,
+  };
+  // .mavsdk.rpc.offboard.OffboardResult offboard_result = 1;
+  bool has_offboard_result() const;
+  void clear_offboard_result() ;
+  const ::mavsdk::rpc::offboard::OffboardResult& offboard_result() const;
+  PROTOBUF_NODISCARD ::mavsdk::rpc::offboard::OffboardResult* release_offboard_result();
+  ::mavsdk::rpc::offboard::OffboardResult* mutable_offboard_result();
+  void set_allocated_offboard_result(::mavsdk::rpc::offboard::OffboardResult* value);
+  void unsafe_arena_set_allocated_offboard_result(::mavsdk::rpc::offboard::OffboardResult* value);
+  ::mavsdk::rpc::offboard::OffboardResult* unsafe_arena_release_offboard_result();
+
+  private:
+  const ::mavsdk::rpc::offboard::OffboardResult& _internal_offboard_result() const;
+  ::mavsdk::rpc::offboard::OffboardResult* _internal_mutable_offboard_result();
+
+  public:
+  // @@protoc_insertion_point(class_scope:mavsdk.rpc.offboard.SetAttitudeQuaternionResponse)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      0, 1, 1,
+      0, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const SetAttitudeQuaternionResponse& from_msg);
+    ::google::protobuf::internal::HasBits<1> _has_bits_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    ::mavsdk::rpc::offboard::OffboardResult* offboard_result_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_offboard_2foffboard_2eproto;
+};
+// -------------------------------------------------------------------
+
+class SetAttitudeQuaternionRequest final
+    : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:mavsdk.rpc.offboard.SetAttitudeQuaternionRequest) */ {
+ public:
+  inline SetAttitudeQuaternionRequest() : SetAttitudeQuaternionRequest(nullptr) {}
+  ~SetAttitudeQuaternionRequest() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(SetAttitudeQuaternionRequest* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(SetAttitudeQuaternionRequest));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR SetAttitudeQuaternionRequest(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline SetAttitudeQuaternionRequest(const SetAttitudeQuaternionRequest& from) : SetAttitudeQuaternionRequest(nullptr, from) {}
+  inline SetAttitudeQuaternionRequest(SetAttitudeQuaternionRequest&& from) noexcept
+      : SetAttitudeQuaternionRequest(nullptr, std::move(from)) {}
+  inline SetAttitudeQuaternionRequest& operator=(const SetAttitudeQuaternionRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline SetAttitudeQuaternionRequest& operator=(SetAttitudeQuaternionRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const SetAttitudeQuaternionRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const SetAttitudeQuaternionRequest* internal_default_instance() {
+    return reinterpret_cast<const SetAttitudeQuaternionRequest*>(
+        &_SetAttitudeQuaternionRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 8;
+  friend void swap(SetAttitudeQuaternionRequest& a, SetAttitudeQuaternionRequest& b) { a.Swap(&b); }
+  inline void Swap(SetAttitudeQuaternionRequest* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(SetAttitudeQuaternionRequest* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  SetAttitudeQuaternionRequest* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<SetAttitudeQuaternionRequest>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const SetAttitudeQuaternionRequest& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const SetAttitudeQuaternionRequest& from) { SetAttitudeQuaternionRequest::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(
+      ::google::protobuf::MessageLite& to_msg,
+      const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* _InternalSerialize(
+      const MessageLite& msg, ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(SetAttitudeQuaternionRequest* other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "mavsdk.rpc.offboard.SetAttitudeQuaternionRequest"; }
+
+ protected:
+  explicit SetAttitudeQuaternionRequest(::google::protobuf::Arena* arena);
+  SetAttitudeQuaternionRequest(::google::protobuf::Arena* arena, const SetAttitudeQuaternionRequest& from);
+  SetAttitudeQuaternionRequest(::google::protobuf::Arena* arena, SetAttitudeQuaternionRequest&& from) noexcept
+      : SetAttitudeQuaternionRequest(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kAttitudeQuaternionFieldNumber = 1,
+  };
+  // .mavsdk.rpc.offboard.AttitudeQuaternion attitude_quaternion = 1;
+  bool has_attitude_quaternion() const;
+  void clear_attitude_quaternion() ;
+  const ::mavsdk::rpc::offboard::AttitudeQuaternion& attitude_quaternion() const;
+  PROTOBUF_NODISCARD ::mavsdk::rpc::offboard::AttitudeQuaternion* release_attitude_quaternion();
+  ::mavsdk::rpc::offboard::AttitudeQuaternion* mutable_attitude_quaternion();
+  void set_allocated_attitude_quaternion(::mavsdk::rpc::offboard::AttitudeQuaternion* value);
+  void unsafe_arena_set_allocated_attitude_quaternion(::mavsdk::rpc::offboard::AttitudeQuaternion* value);
+  ::mavsdk::rpc::offboard::AttitudeQuaternion* unsafe_arena_release_attitude_quaternion();
+
+  private:
+  const ::mavsdk::rpc::offboard::AttitudeQuaternion& _internal_attitude_quaternion() const;
+  ::mavsdk::rpc::offboard::AttitudeQuaternion* _internal_mutable_attitude_quaternion();
+
+  public:
+  // @@protoc_insertion_point(class_scope:mavsdk.rpc.offboard.SetAttitudeQuaternionRequest)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      0, 1, 1,
+      0, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const SetAttitudeQuaternionRequest& from_msg);
+    ::google::protobuf::internal::HasBits<1> _has_bits_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    ::mavsdk::rpc::offboard::AttitudeQuaternion* attitude_quaternion_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_offboard_2foffboard_2eproto;
+};
+// -------------------------------------------------------------------
+
 class SetActuatorControlResponse final
     : public ::google::protobuf::Message
 /* @@protoc_insertion_point(class_definition:mavsdk.rpc.offboard.SetActuatorControlResponse) */ {
@@ -6585,7 +7227,7 @@ class SetActuatorControlResponse final
     return reinterpret_cast<const SetActuatorControlResponse*>(
         &_SetActuatorControlResponse_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 9;
+  static constexpr int kIndexInFileMessages = 11;
   friend void swap(SetActuatorControlResponse& a, SetActuatorControlResponse& b) { a.Swap(&b); }
   inline void Swap(SetActuatorControlResponse* other) {
     if (other == this) return;
@@ -6782,7 +7424,7 @@ class SetAccelerationNedResponse final
     return reinterpret_cast<const SetAccelerationNedResponse*>(
         &_SetAccelerationNedResponse_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 25;
+  static constexpr int kIndexInFileMessages = 27;
   friend void swap(SetAccelerationNedResponse& a, SetAccelerationNedResponse& b) { a.Swap(&b); }
   inline void Swap(SetAccelerationNedResponse* other) {
     if (other == this) return;
@@ -6979,7 +7621,7 @@ class SetAccelerationNedRequest final
     return reinterpret_cast<const SetAccelerationNedRequest*>(
         &_SetAccelerationNedRequest_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 24;
+  static constexpr int kIndexInFileMessages = 26;
   friend void swap(SetAccelerationNedRequest& a, SetAccelerationNedRequest& b) { a.Swap(&b); }
   inline void Swap(SetAccelerationNedRequest* other) {
     if (other == this) return;
@@ -7176,7 +7818,7 @@ class ActuatorControl final
     return reinterpret_cast<const ActuatorControl*>(
         &_ActuatorControl_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 28;
+  static constexpr int kIndexInFileMessages = 31;
   friend void swap(ActuatorControl& a, ActuatorControl& b) { a.Swap(&b); }
   inline void Swap(ActuatorControl* other) {
     if (other == this) return;
@@ -7374,7 +8016,7 @@ class SetActuatorControlRequest final
     return reinterpret_cast<const SetActuatorControlRequest*>(
         &_SetActuatorControlRequest_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 8;
+  static constexpr int kIndexInFileMessages = 10;
   friend void swap(SetActuatorControlRequest& a, SetActuatorControlRequest& b) { a.Swap(&b); }
   inline void Swap(SetActuatorControlRequest* other) {
     if (other == this) return;
@@ -7958,6 +8600,206 @@ inline void SetAttitudeResponse::set_allocated_offboard_result(::mavsdk::rpc::of
 
   _impl_.offboard_result_ = reinterpret_cast<::mavsdk::rpc::offboard::OffboardResult*>(value);
   // @@protoc_insertion_point(field_set_allocated:mavsdk.rpc.offboard.SetAttitudeResponse.offboard_result)
+}
+
+// -------------------------------------------------------------------
+
+// SetAttitudeQuaternionRequest
+
+// .mavsdk.rpc.offboard.AttitudeQuaternion attitude_quaternion = 1;
+inline bool SetAttitudeQuaternionRequest::has_attitude_quaternion() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  PROTOBUF_ASSUME(!value || _impl_.attitude_quaternion_ != nullptr);
+  return value;
+}
+inline void SetAttitudeQuaternionRequest::clear_attitude_quaternion() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (_impl_.attitude_quaternion_ != nullptr) _impl_.attitude_quaternion_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline const ::mavsdk::rpc::offboard::AttitudeQuaternion& SetAttitudeQuaternionRequest::_internal_attitude_quaternion() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  const ::mavsdk::rpc::offboard::AttitudeQuaternion* p = _impl_.attitude_quaternion_;
+  return p != nullptr ? *p : reinterpret_cast<const ::mavsdk::rpc::offboard::AttitudeQuaternion&>(::mavsdk::rpc::offboard::_AttitudeQuaternion_default_instance_);
+}
+inline const ::mavsdk::rpc::offboard::AttitudeQuaternion& SetAttitudeQuaternionRequest::attitude_quaternion() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.offboard.SetAttitudeQuaternionRequest.attitude_quaternion)
+  return _internal_attitude_quaternion();
+}
+inline void SetAttitudeQuaternionRequest::unsafe_arena_set_allocated_attitude_quaternion(::mavsdk::rpc::offboard::AttitudeQuaternion* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (GetArena() == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.attitude_quaternion_);
+  }
+  _impl_.attitude_quaternion_ = reinterpret_cast<::mavsdk::rpc::offboard::AttitudeQuaternion*>(value);
+  if (value != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:mavsdk.rpc.offboard.SetAttitudeQuaternionRequest.attitude_quaternion)
+}
+inline ::mavsdk::rpc::offboard::AttitudeQuaternion* SetAttitudeQuaternionRequest::release_attitude_quaternion() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::mavsdk::rpc::offboard::AttitudeQuaternion* released = _impl_.attitude_quaternion_;
+  _impl_.attitude_quaternion_ = nullptr;
+  if (::google::protobuf::internal::DebugHardenForceCopyInRelease()) {
+    auto* old = reinterpret_cast<::google::protobuf::MessageLite*>(released);
+    released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    if (GetArena() == nullptr) {
+      delete old;
+    }
+  } else {
+    if (GetArena() != nullptr) {
+      released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    }
+  }
+  return released;
+}
+inline ::mavsdk::rpc::offboard::AttitudeQuaternion* SetAttitudeQuaternionRequest::unsafe_arena_release_attitude_quaternion() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:mavsdk.rpc.offboard.SetAttitudeQuaternionRequest.attitude_quaternion)
+
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::mavsdk::rpc::offboard::AttitudeQuaternion* temp = _impl_.attitude_quaternion_;
+  _impl_.attitude_quaternion_ = nullptr;
+  return temp;
+}
+inline ::mavsdk::rpc::offboard::AttitudeQuaternion* SetAttitudeQuaternionRequest::_internal_mutable_attitude_quaternion() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (_impl_.attitude_quaternion_ == nullptr) {
+    auto* p = ::google::protobuf::Message::DefaultConstruct<::mavsdk::rpc::offboard::AttitudeQuaternion>(GetArena());
+    _impl_.attitude_quaternion_ = reinterpret_cast<::mavsdk::rpc::offboard::AttitudeQuaternion*>(p);
+  }
+  return _impl_.attitude_quaternion_;
+}
+inline ::mavsdk::rpc::offboard::AttitudeQuaternion* SetAttitudeQuaternionRequest::mutable_attitude_quaternion() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  ::mavsdk::rpc::offboard::AttitudeQuaternion* _msg = _internal_mutable_attitude_quaternion();
+  // @@protoc_insertion_point(field_mutable:mavsdk.rpc.offboard.SetAttitudeQuaternionRequest.attitude_quaternion)
+  return _msg;
+}
+inline void SetAttitudeQuaternionRequest::set_allocated_attitude_quaternion(::mavsdk::rpc::offboard::AttitudeQuaternion* value) {
+  ::google::protobuf::Arena* message_arena = GetArena();
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (message_arena == nullptr) {
+    delete (_impl_.attitude_quaternion_);
+  }
+
+  if (value != nullptr) {
+    ::google::protobuf::Arena* submessage_arena = (value)->GetArena();
+    if (message_arena != submessage_arena) {
+      value = ::google::protobuf::internal::GetOwnedMessage(message_arena, value, submessage_arena);
+    }
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+
+  _impl_.attitude_quaternion_ = reinterpret_cast<::mavsdk::rpc::offboard::AttitudeQuaternion*>(value);
+  // @@protoc_insertion_point(field_set_allocated:mavsdk.rpc.offboard.SetAttitudeQuaternionRequest.attitude_quaternion)
+}
+
+// -------------------------------------------------------------------
+
+// SetAttitudeQuaternionResponse
+
+// .mavsdk.rpc.offboard.OffboardResult offboard_result = 1;
+inline bool SetAttitudeQuaternionResponse::has_offboard_result() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  PROTOBUF_ASSUME(!value || _impl_.offboard_result_ != nullptr);
+  return value;
+}
+inline void SetAttitudeQuaternionResponse::clear_offboard_result() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (_impl_.offboard_result_ != nullptr) _impl_.offboard_result_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline const ::mavsdk::rpc::offboard::OffboardResult& SetAttitudeQuaternionResponse::_internal_offboard_result() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  const ::mavsdk::rpc::offboard::OffboardResult* p = _impl_.offboard_result_;
+  return p != nullptr ? *p : reinterpret_cast<const ::mavsdk::rpc::offboard::OffboardResult&>(::mavsdk::rpc::offboard::_OffboardResult_default_instance_);
+}
+inline const ::mavsdk::rpc::offboard::OffboardResult& SetAttitudeQuaternionResponse::offboard_result() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.offboard.SetAttitudeQuaternionResponse.offboard_result)
+  return _internal_offboard_result();
+}
+inline void SetAttitudeQuaternionResponse::unsafe_arena_set_allocated_offboard_result(::mavsdk::rpc::offboard::OffboardResult* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (GetArena() == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.offboard_result_);
+  }
+  _impl_.offboard_result_ = reinterpret_cast<::mavsdk::rpc::offboard::OffboardResult*>(value);
+  if (value != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:mavsdk.rpc.offboard.SetAttitudeQuaternionResponse.offboard_result)
+}
+inline ::mavsdk::rpc::offboard::OffboardResult* SetAttitudeQuaternionResponse::release_offboard_result() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::mavsdk::rpc::offboard::OffboardResult* released = _impl_.offboard_result_;
+  _impl_.offboard_result_ = nullptr;
+  if (::google::protobuf::internal::DebugHardenForceCopyInRelease()) {
+    auto* old = reinterpret_cast<::google::protobuf::MessageLite*>(released);
+    released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    if (GetArena() == nullptr) {
+      delete old;
+    }
+  } else {
+    if (GetArena() != nullptr) {
+      released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    }
+  }
+  return released;
+}
+inline ::mavsdk::rpc::offboard::OffboardResult* SetAttitudeQuaternionResponse::unsafe_arena_release_offboard_result() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:mavsdk.rpc.offboard.SetAttitudeQuaternionResponse.offboard_result)
+
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::mavsdk::rpc::offboard::OffboardResult* temp = _impl_.offboard_result_;
+  _impl_.offboard_result_ = nullptr;
+  return temp;
+}
+inline ::mavsdk::rpc::offboard::OffboardResult* SetAttitudeQuaternionResponse::_internal_mutable_offboard_result() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (_impl_.offboard_result_ == nullptr) {
+    auto* p = ::google::protobuf::Message::DefaultConstruct<::mavsdk::rpc::offboard::OffboardResult>(GetArena());
+    _impl_.offboard_result_ = reinterpret_cast<::mavsdk::rpc::offboard::OffboardResult*>(p);
+  }
+  return _impl_.offboard_result_;
+}
+inline ::mavsdk::rpc::offboard::OffboardResult* SetAttitudeQuaternionResponse::mutable_offboard_result() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  ::mavsdk::rpc::offboard::OffboardResult* _msg = _internal_mutable_offboard_result();
+  // @@protoc_insertion_point(field_mutable:mavsdk.rpc.offboard.SetAttitudeQuaternionResponse.offboard_result)
+  return _msg;
+}
+inline void SetAttitudeQuaternionResponse::set_allocated_offboard_result(::mavsdk::rpc::offboard::OffboardResult* value) {
+  ::google::protobuf::Arena* message_arena = GetArena();
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (message_arena == nullptr) {
+    delete (_impl_.offboard_result_);
+  }
+
+  if (value != nullptr) {
+    ::google::protobuf::Arena* submessage_arena = (value)->GetArena();
+    if (message_arena != submessage_arena) {
+      value = ::google::protobuf::internal::GetOwnedMessage(message_arena, value, submessage_arena);
+    }
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+
+  _impl_.offboard_result_ = reinterpret_cast<::mavsdk::rpc::offboard::OffboardResult*>(value);
+  // @@protoc_insertion_point(field_set_allocated:mavsdk.rpc.offboard.SetAttitudeQuaternionResponse.offboard_result)
 }
 
 // -------------------------------------------------------------------
@@ -10136,6 +10978,120 @@ inline float Attitude::_internal_thrust_value() const {
   return _impl_.thrust_value_;
 }
 inline void Attitude::_internal_set_thrust_value(float value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.thrust_value_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// AttitudeQuaternion
+
+// float w = 1;
+inline void AttitudeQuaternion::clear_w() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.w_ = 0;
+}
+inline float AttitudeQuaternion::w() const {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.offboard.AttitudeQuaternion.w)
+  return _internal_w();
+}
+inline void AttitudeQuaternion::set_w(float value) {
+  _internal_set_w(value);
+  // @@protoc_insertion_point(field_set:mavsdk.rpc.offboard.AttitudeQuaternion.w)
+}
+inline float AttitudeQuaternion::_internal_w() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.w_;
+}
+inline void AttitudeQuaternion::_internal_set_w(float value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.w_ = value;
+}
+
+// float x = 2;
+inline void AttitudeQuaternion::clear_x() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.x_ = 0;
+}
+inline float AttitudeQuaternion::x() const {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.offboard.AttitudeQuaternion.x)
+  return _internal_x();
+}
+inline void AttitudeQuaternion::set_x(float value) {
+  _internal_set_x(value);
+  // @@protoc_insertion_point(field_set:mavsdk.rpc.offboard.AttitudeQuaternion.x)
+}
+inline float AttitudeQuaternion::_internal_x() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.x_;
+}
+inline void AttitudeQuaternion::_internal_set_x(float value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.x_ = value;
+}
+
+// float y = 3;
+inline void AttitudeQuaternion::clear_y() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.y_ = 0;
+}
+inline float AttitudeQuaternion::y() const {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.offboard.AttitudeQuaternion.y)
+  return _internal_y();
+}
+inline void AttitudeQuaternion::set_y(float value) {
+  _internal_set_y(value);
+  // @@protoc_insertion_point(field_set:mavsdk.rpc.offboard.AttitudeQuaternion.y)
+}
+inline float AttitudeQuaternion::_internal_y() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.y_;
+}
+inline void AttitudeQuaternion::_internal_set_y(float value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.y_ = value;
+}
+
+// float z = 4;
+inline void AttitudeQuaternion::clear_z() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.z_ = 0;
+}
+inline float AttitudeQuaternion::z() const {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.offboard.AttitudeQuaternion.z)
+  return _internal_z();
+}
+inline void AttitudeQuaternion::set_z(float value) {
+  _internal_set_z(value);
+  // @@protoc_insertion_point(field_set:mavsdk.rpc.offboard.AttitudeQuaternion.z)
+}
+inline float AttitudeQuaternion::_internal_z() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.z_;
+}
+inline void AttitudeQuaternion::_internal_set_z(float value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.z_ = value;
+}
+
+// float thrust_value = 5;
+inline void AttitudeQuaternion::clear_thrust_value() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.thrust_value_ = 0;
+}
+inline float AttitudeQuaternion::thrust_value() const {
+  // @@protoc_insertion_point(field_get:mavsdk.rpc.offboard.AttitudeQuaternion.thrust_value)
+  return _internal_thrust_value();
+}
+inline void AttitudeQuaternion::set_thrust_value(float value) {
+  _internal_set_thrust_value(value);
+  // @@protoc_insertion_point(field_set:mavsdk.rpc.offboard.AttitudeQuaternion.thrust_value)
+}
+inline float AttitudeQuaternion::_internal_thrust_value() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.thrust_value_;
+}
+inline void AttitudeQuaternion::_internal_set_thrust_value(float value) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.thrust_value_ = value;
 }

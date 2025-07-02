@@ -88,6 +88,15 @@ class OffboardService final {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::offboard::SetAttitudeResponse>>(PrepareAsyncSetAttitudeRaw(context, request, cq));
     }
     //
+    // Set the attitude as a quaternion with thrust.
+    virtual ::grpc::Status SetAttitudeQuaternion(::grpc::ClientContext* context, const ::mavsdk::rpc::offboard::SetAttitudeQuaternionRequest& request, ::mavsdk::rpc::offboard::SetAttitudeQuaternionResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::offboard::SetAttitudeQuaternionResponse>> AsyncSetAttitudeQuaternion(::grpc::ClientContext* context, const ::mavsdk::rpc::offboard::SetAttitudeQuaternionRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::offboard::SetAttitudeQuaternionResponse>>(AsyncSetAttitudeQuaternionRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::offboard::SetAttitudeQuaternionResponse>> PrepareAsyncSetAttitudeQuaternion(::grpc::ClientContext* context, const ::mavsdk::rpc::offboard::SetAttitudeQuaternionRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::offboard::SetAttitudeQuaternionResponse>>(PrepareAsyncSetAttitudeQuaternionRaw(context, request, cq));
+    }
+    //
     // Set direct actuator control values to groups #0 and #1.
     //
     // First 8 controls will go to control group 0, the following 8 controls to control group 1 (if
@@ -196,6 +205,10 @@ class OffboardService final {
       virtual void SetAttitude(::grpc::ClientContext* context, const ::mavsdk::rpc::offboard::SetAttitudeRequest* request, ::mavsdk::rpc::offboard::SetAttitudeResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void SetAttitude(::grpc::ClientContext* context, const ::mavsdk::rpc::offboard::SetAttitudeRequest* request, ::mavsdk::rpc::offboard::SetAttitudeResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       //
+      // Set the attitude as a quaternion with thrust.
+      virtual void SetAttitudeQuaternion(::grpc::ClientContext* context, const ::mavsdk::rpc::offboard::SetAttitudeQuaternionRequest* request, ::mavsdk::rpc::offboard::SetAttitudeQuaternionResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void SetAttitudeQuaternion(::grpc::ClientContext* context, const ::mavsdk::rpc::offboard::SetAttitudeQuaternionRequest* request, ::mavsdk::rpc::offboard::SetAttitudeQuaternionResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      //
       // Set direct actuator control values to groups #0 and #1.
       //
       // First 8 controls will go to control group 0, the following 8 controls to control group 1 (if
@@ -247,6 +260,8 @@ class OffboardService final {
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::offboard::IsActiveResponse>* PrepareAsyncIsActiveRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::offboard::IsActiveRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::offboard::SetAttitudeResponse>* AsyncSetAttitudeRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::offboard::SetAttitudeRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::offboard::SetAttitudeResponse>* PrepareAsyncSetAttitudeRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::offboard::SetAttitudeRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::offboard::SetAttitudeQuaternionResponse>* AsyncSetAttitudeQuaternionRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::offboard::SetAttitudeQuaternionRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::offboard::SetAttitudeQuaternionResponse>* PrepareAsyncSetAttitudeQuaternionRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::offboard::SetAttitudeQuaternionRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::offboard::SetActuatorControlResponse>* AsyncSetActuatorControlRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::offboard::SetActuatorControlRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::offboard::SetActuatorControlResponse>* PrepareAsyncSetActuatorControlRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::offboard::SetActuatorControlRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::mavsdk::rpc::offboard::SetAttitudeRateResponse>* AsyncSetAttitudeRateRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::offboard::SetAttitudeRateRequest& request, ::grpc::CompletionQueue* cq) = 0;
@@ -296,6 +311,13 @@ class OffboardService final {
     }
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::offboard::SetAttitudeResponse>> PrepareAsyncSetAttitude(::grpc::ClientContext* context, const ::mavsdk::rpc::offboard::SetAttitudeRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::offboard::SetAttitudeResponse>>(PrepareAsyncSetAttitudeRaw(context, request, cq));
+    }
+    ::grpc::Status SetAttitudeQuaternion(::grpc::ClientContext* context, const ::mavsdk::rpc::offboard::SetAttitudeQuaternionRequest& request, ::mavsdk::rpc::offboard::SetAttitudeQuaternionResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::offboard::SetAttitudeQuaternionResponse>> AsyncSetAttitudeQuaternion(::grpc::ClientContext* context, const ::mavsdk::rpc::offboard::SetAttitudeQuaternionRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::offboard::SetAttitudeQuaternionResponse>>(AsyncSetAttitudeQuaternionRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::offboard::SetAttitudeQuaternionResponse>> PrepareAsyncSetAttitudeQuaternion(::grpc::ClientContext* context, const ::mavsdk::rpc::offboard::SetAttitudeQuaternionRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::offboard::SetAttitudeQuaternionResponse>>(PrepareAsyncSetAttitudeQuaternionRaw(context, request, cq));
     }
     ::grpc::Status SetActuatorControl(::grpc::ClientContext* context, const ::mavsdk::rpc::offboard::SetActuatorControlRequest& request, ::mavsdk::rpc::offboard::SetActuatorControlResponse* response) override;
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::offboard::SetActuatorControlResponse>> AsyncSetActuatorControl(::grpc::ClientContext* context, const ::mavsdk::rpc::offboard::SetActuatorControlRequest& request, ::grpc::CompletionQueue* cq) {
@@ -371,6 +393,8 @@ class OffboardService final {
       void IsActive(::grpc::ClientContext* context, const ::mavsdk::rpc::offboard::IsActiveRequest* request, ::mavsdk::rpc::offboard::IsActiveResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
       void SetAttitude(::grpc::ClientContext* context, const ::mavsdk::rpc::offboard::SetAttitudeRequest* request, ::mavsdk::rpc::offboard::SetAttitudeResponse* response, std::function<void(::grpc::Status)>) override;
       void SetAttitude(::grpc::ClientContext* context, const ::mavsdk::rpc::offboard::SetAttitudeRequest* request, ::mavsdk::rpc::offboard::SetAttitudeResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void SetAttitudeQuaternion(::grpc::ClientContext* context, const ::mavsdk::rpc::offboard::SetAttitudeQuaternionRequest* request, ::mavsdk::rpc::offboard::SetAttitudeQuaternionResponse* response, std::function<void(::grpc::Status)>) override;
+      void SetAttitudeQuaternion(::grpc::ClientContext* context, const ::mavsdk::rpc::offboard::SetAttitudeQuaternionRequest* request, ::mavsdk::rpc::offboard::SetAttitudeQuaternionResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
       void SetActuatorControl(::grpc::ClientContext* context, const ::mavsdk::rpc::offboard::SetActuatorControlRequest* request, ::mavsdk::rpc::offboard::SetActuatorControlResponse* response, std::function<void(::grpc::Status)>) override;
       void SetActuatorControl(::grpc::ClientContext* context, const ::mavsdk::rpc::offboard::SetActuatorControlRequest* request, ::mavsdk::rpc::offboard::SetActuatorControlResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
       void SetAttitudeRate(::grpc::ClientContext* context, const ::mavsdk::rpc::offboard::SetAttitudeRateRequest* request, ::mavsdk::rpc::offboard::SetAttitudeRateResponse* response, std::function<void(::grpc::Status)>) override;
@@ -408,6 +432,8 @@ class OffboardService final {
     ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::offboard::IsActiveResponse>* PrepareAsyncIsActiveRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::offboard::IsActiveRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::offboard::SetAttitudeResponse>* AsyncSetAttitudeRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::offboard::SetAttitudeRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::offboard::SetAttitudeResponse>* PrepareAsyncSetAttitudeRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::offboard::SetAttitudeRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::offboard::SetAttitudeQuaternionResponse>* AsyncSetAttitudeQuaternionRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::offboard::SetAttitudeQuaternionRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::offboard::SetAttitudeQuaternionResponse>* PrepareAsyncSetAttitudeQuaternionRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::offboard::SetAttitudeQuaternionRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::offboard::SetActuatorControlResponse>* AsyncSetActuatorControlRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::offboard::SetActuatorControlRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::offboard::SetActuatorControlResponse>* PrepareAsyncSetActuatorControlRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::offboard::SetActuatorControlRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::mavsdk::rpc::offboard::SetAttitudeRateResponse>* AsyncSetAttitudeRateRaw(::grpc::ClientContext* context, const ::mavsdk::rpc::offboard::SetAttitudeRateRequest& request, ::grpc::CompletionQueue* cq) override;
@@ -430,6 +456,7 @@ class OffboardService final {
     const ::grpc::internal::RpcMethod rpcmethod_Stop_;
     const ::grpc::internal::RpcMethod rpcmethod_IsActive_;
     const ::grpc::internal::RpcMethod rpcmethod_SetAttitude_;
+    const ::grpc::internal::RpcMethod rpcmethod_SetAttitudeQuaternion_;
     const ::grpc::internal::RpcMethod rpcmethod_SetActuatorControl_;
     const ::grpc::internal::RpcMethod rpcmethod_SetAttitudeRate_;
     const ::grpc::internal::RpcMethod rpcmethod_SetPositionNed_;
@@ -463,6 +490,9 @@ class OffboardService final {
     //
     // Set the attitude in terms of roll, pitch and yaw in degrees with thrust.
     virtual ::grpc::Status SetAttitude(::grpc::ServerContext* context, const ::mavsdk::rpc::offboard::SetAttitudeRequest* request, ::mavsdk::rpc::offboard::SetAttitudeResponse* response);
+    //
+    // Set the attitude as a quaternion with thrust.
+    virtual ::grpc::Status SetAttitudeQuaternion(::grpc::ServerContext* context, const ::mavsdk::rpc::offboard::SetAttitudeQuaternionRequest* request, ::mavsdk::rpc::offboard::SetAttitudeQuaternionResponse* response);
     //
     // Set direct actuator control values to groups #0 and #1.
     //
@@ -575,12 +605,32 @@ class OffboardService final {
     }
   };
   template <class BaseClass>
+  class WithAsyncMethod_SetAttitudeQuaternion : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_SetAttitudeQuaternion() {
+      ::grpc::Service::MarkMethodAsync(4);
+    }
+    ~WithAsyncMethod_SetAttitudeQuaternion() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SetAttitudeQuaternion(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::offboard::SetAttitudeQuaternionRequest* /*request*/, ::mavsdk::rpc::offboard::SetAttitudeQuaternionResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestSetAttitudeQuaternion(::grpc::ServerContext* context, ::mavsdk::rpc::offboard::SetAttitudeQuaternionRequest* request, ::grpc::ServerAsyncResponseWriter< ::mavsdk::rpc::offboard::SetAttitudeQuaternionResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(4, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
   class WithAsyncMethod_SetActuatorControl : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_SetActuatorControl() {
-      ::grpc::Service::MarkMethodAsync(4);
+      ::grpc::Service::MarkMethodAsync(5);
     }
     ~WithAsyncMethod_SetActuatorControl() override {
       BaseClassMustBeDerivedFromService(this);
@@ -591,7 +641,7 @@ class OffboardService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetActuatorControl(::grpc::ServerContext* context, ::mavsdk::rpc::offboard::SetActuatorControlRequest* request, ::grpc::ServerAsyncResponseWriter< ::mavsdk::rpc::offboard::SetActuatorControlResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(4, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(5, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -600,7 +650,7 @@ class OffboardService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_SetAttitudeRate() {
-      ::grpc::Service::MarkMethodAsync(5);
+      ::grpc::Service::MarkMethodAsync(6);
     }
     ~WithAsyncMethod_SetAttitudeRate() override {
       BaseClassMustBeDerivedFromService(this);
@@ -611,7 +661,7 @@ class OffboardService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetAttitudeRate(::grpc::ServerContext* context, ::mavsdk::rpc::offboard::SetAttitudeRateRequest* request, ::grpc::ServerAsyncResponseWriter< ::mavsdk::rpc::offboard::SetAttitudeRateResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(5, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(6, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -620,7 +670,7 @@ class OffboardService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_SetPositionNed() {
-      ::grpc::Service::MarkMethodAsync(6);
+      ::grpc::Service::MarkMethodAsync(7);
     }
     ~WithAsyncMethod_SetPositionNed() override {
       BaseClassMustBeDerivedFromService(this);
@@ -631,7 +681,7 @@ class OffboardService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetPositionNed(::grpc::ServerContext* context, ::mavsdk::rpc::offboard::SetPositionNedRequest* request, ::grpc::ServerAsyncResponseWriter< ::mavsdk::rpc::offboard::SetPositionNedResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(6, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(7, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -640,7 +690,7 @@ class OffboardService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_SetPositionGlobal() {
-      ::grpc::Service::MarkMethodAsync(7);
+      ::grpc::Service::MarkMethodAsync(8);
     }
     ~WithAsyncMethod_SetPositionGlobal() override {
       BaseClassMustBeDerivedFromService(this);
@@ -651,7 +701,7 @@ class OffboardService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetPositionGlobal(::grpc::ServerContext* context, ::mavsdk::rpc::offboard::SetPositionGlobalRequest* request, ::grpc::ServerAsyncResponseWriter< ::mavsdk::rpc::offboard::SetPositionGlobalResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(7, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(8, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -660,7 +710,7 @@ class OffboardService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_SetVelocityBody() {
-      ::grpc::Service::MarkMethodAsync(8);
+      ::grpc::Service::MarkMethodAsync(9);
     }
     ~WithAsyncMethod_SetVelocityBody() override {
       BaseClassMustBeDerivedFromService(this);
@@ -671,7 +721,7 @@ class OffboardService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetVelocityBody(::grpc::ServerContext* context, ::mavsdk::rpc::offboard::SetVelocityBodyRequest* request, ::grpc::ServerAsyncResponseWriter< ::mavsdk::rpc::offboard::SetVelocityBodyResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(8, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(9, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -680,7 +730,7 @@ class OffboardService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_SetVelocityNed() {
-      ::grpc::Service::MarkMethodAsync(9);
+      ::grpc::Service::MarkMethodAsync(10);
     }
     ~WithAsyncMethod_SetVelocityNed() override {
       BaseClassMustBeDerivedFromService(this);
@@ -691,7 +741,7 @@ class OffboardService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetVelocityNed(::grpc::ServerContext* context, ::mavsdk::rpc::offboard::SetVelocityNedRequest* request, ::grpc::ServerAsyncResponseWriter< ::mavsdk::rpc::offboard::SetVelocityNedResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(9, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(10, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -700,7 +750,7 @@ class OffboardService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_SetPositionVelocityNed() {
-      ::grpc::Service::MarkMethodAsync(10);
+      ::grpc::Service::MarkMethodAsync(11);
     }
     ~WithAsyncMethod_SetPositionVelocityNed() override {
       BaseClassMustBeDerivedFromService(this);
@@ -711,7 +761,7 @@ class OffboardService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetPositionVelocityNed(::grpc::ServerContext* context, ::mavsdk::rpc::offboard::SetPositionVelocityNedRequest* request, ::grpc::ServerAsyncResponseWriter< ::mavsdk::rpc::offboard::SetPositionVelocityNedResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(10, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(11, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -720,7 +770,7 @@ class OffboardService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_SetPositionVelocityAccelerationNed() {
-      ::grpc::Service::MarkMethodAsync(11);
+      ::grpc::Service::MarkMethodAsync(12);
     }
     ~WithAsyncMethod_SetPositionVelocityAccelerationNed() override {
       BaseClassMustBeDerivedFromService(this);
@@ -731,7 +781,7 @@ class OffboardService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetPositionVelocityAccelerationNed(::grpc::ServerContext* context, ::mavsdk::rpc::offboard::SetPositionVelocityAccelerationNedRequest* request, ::grpc::ServerAsyncResponseWriter< ::mavsdk::rpc::offboard::SetPositionVelocityAccelerationNedResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(11, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(12, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -740,7 +790,7 @@ class OffboardService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_SetAccelerationNed() {
-      ::grpc::Service::MarkMethodAsync(12);
+      ::grpc::Service::MarkMethodAsync(13);
     }
     ~WithAsyncMethod_SetAccelerationNed() override {
       BaseClassMustBeDerivedFromService(this);
@@ -751,10 +801,10 @@ class OffboardService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetAccelerationNed(::grpc::ServerContext* context, ::mavsdk::rpc::offboard::SetAccelerationNedRequest* request, ::grpc::ServerAsyncResponseWriter< ::mavsdk::rpc::offboard::SetAccelerationNedResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(12, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(13, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
-  typedef WithAsyncMethod_Start<WithAsyncMethod_Stop<WithAsyncMethod_IsActive<WithAsyncMethod_SetAttitude<WithAsyncMethod_SetActuatorControl<WithAsyncMethod_SetAttitudeRate<WithAsyncMethod_SetPositionNed<WithAsyncMethod_SetPositionGlobal<WithAsyncMethod_SetVelocityBody<WithAsyncMethod_SetVelocityNed<WithAsyncMethod_SetPositionVelocityNed<WithAsyncMethod_SetPositionVelocityAccelerationNed<WithAsyncMethod_SetAccelerationNed<Service > > > > > > > > > > > > > AsyncService;
+  typedef WithAsyncMethod_Start<WithAsyncMethod_Stop<WithAsyncMethod_IsActive<WithAsyncMethod_SetAttitude<WithAsyncMethod_SetAttitudeQuaternion<WithAsyncMethod_SetActuatorControl<WithAsyncMethod_SetAttitudeRate<WithAsyncMethod_SetPositionNed<WithAsyncMethod_SetPositionGlobal<WithAsyncMethod_SetVelocityBody<WithAsyncMethod_SetVelocityNed<WithAsyncMethod_SetPositionVelocityNed<WithAsyncMethod_SetPositionVelocityAccelerationNed<WithAsyncMethod_SetAccelerationNed<Service > > > > > > > > > > > > > > AsyncService;
   template <class BaseClass>
   class WithCallbackMethod_Start : public BaseClass {
    private:
@@ -864,18 +914,45 @@ class OffboardService final {
       ::grpc::CallbackServerContext* /*context*/, const ::mavsdk::rpc::offboard::SetAttitudeRequest* /*request*/, ::mavsdk::rpc::offboard::SetAttitudeResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
+  class WithCallbackMethod_SetAttitudeQuaternion : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_SetAttitudeQuaternion() {
+      ::grpc::Service::MarkMethodCallback(4,
+          new ::grpc::internal::CallbackUnaryHandler< ::mavsdk::rpc::offboard::SetAttitudeQuaternionRequest, ::mavsdk::rpc::offboard::SetAttitudeQuaternionResponse>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::mavsdk::rpc::offboard::SetAttitudeQuaternionRequest* request, ::mavsdk::rpc::offboard::SetAttitudeQuaternionResponse* response) { return this->SetAttitudeQuaternion(context, request, response); }));}
+    void SetMessageAllocatorFor_SetAttitudeQuaternion(
+        ::grpc::MessageAllocator< ::mavsdk::rpc::offboard::SetAttitudeQuaternionRequest, ::mavsdk::rpc::offboard::SetAttitudeQuaternionResponse>* allocator) {
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(4);
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::mavsdk::rpc::offboard::SetAttitudeQuaternionRequest, ::mavsdk::rpc::offboard::SetAttitudeQuaternionResponse>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~WithCallbackMethod_SetAttitudeQuaternion() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SetAttitudeQuaternion(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::offboard::SetAttitudeQuaternionRequest* /*request*/, ::mavsdk::rpc::offboard::SetAttitudeQuaternionResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* SetAttitudeQuaternion(
+      ::grpc::CallbackServerContext* /*context*/, const ::mavsdk::rpc::offboard::SetAttitudeQuaternionRequest* /*request*/, ::mavsdk::rpc::offboard::SetAttitudeQuaternionResponse* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
   class WithCallbackMethod_SetActuatorControl : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_SetActuatorControl() {
-      ::grpc::Service::MarkMethodCallback(4,
+      ::grpc::Service::MarkMethodCallback(5,
           new ::grpc::internal::CallbackUnaryHandler< ::mavsdk::rpc::offboard::SetActuatorControlRequest, ::mavsdk::rpc::offboard::SetActuatorControlResponse>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::mavsdk::rpc::offboard::SetActuatorControlRequest* request, ::mavsdk::rpc::offboard::SetActuatorControlResponse* response) { return this->SetActuatorControl(context, request, response); }));}
     void SetMessageAllocatorFor_SetActuatorControl(
         ::grpc::MessageAllocator< ::mavsdk::rpc::offboard::SetActuatorControlRequest, ::mavsdk::rpc::offboard::SetActuatorControlResponse>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(4);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(5);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::mavsdk::rpc::offboard::SetActuatorControlRequest, ::mavsdk::rpc::offboard::SetActuatorControlResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -896,13 +973,13 @@ class OffboardService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_SetAttitudeRate() {
-      ::grpc::Service::MarkMethodCallback(5,
+      ::grpc::Service::MarkMethodCallback(6,
           new ::grpc::internal::CallbackUnaryHandler< ::mavsdk::rpc::offboard::SetAttitudeRateRequest, ::mavsdk::rpc::offboard::SetAttitudeRateResponse>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::mavsdk::rpc::offboard::SetAttitudeRateRequest* request, ::mavsdk::rpc::offboard::SetAttitudeRateResponse* response) { return this->SetAttitudeRate(context, request, response); }));}
     void SetMessageAllocatorFor_SetAttitudeRate(
         ::grpc::MessageAllocator< ::mavsdk::rpc::offboard::SetAttitudeRateRequest, ::mavsdk::rpc::offboard::SetAttitudeRateResponse>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(5);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(6);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::mavsdk::rpc::offboard::SetAttitudeRateRequest, ::mavsdk::rpc::offboard::SetAttitudeRateResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -923,13 +1000,13 @@ class OffboardService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_SetPositionNed() {
-      ::grpc::Service::MarkMethodCallback(6,
+      ::grpc::Service::MarkMethodCallback(7,
           new ::grpc::internal::CallbackUnaryHandler< ::mavsdk::rpc::offboard::SetPositionNedRequest, ::mavsdk::rpc::offboard::SetPositionNedResponse>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::mavsdk::rpc::offboard::SetPositionNedRequest* request, ::mavsdk::rpc::offboard::SetPositionNedResponse* response) { return this->SetPositionNed(context, request, response); }));}
     void SetMessageAllocatorFor_SetPositionNed(
         ::grpc::MessageAllocator< ::mavsdk::rpc::offboard::SetPositionNedRequest, ::mavsdk::rpc::offboard::SetPositionNedResponse>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(6);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(7);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::mavsdk::rpc::offboard::SetPositionNedRequest, ::mavsdk::rpc::offboard::SetPositionNedResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -950,13 +1027,13 @@ class OffboardService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_SetPositionGlobal() {
-      ::grpc::Service::MarkMethodCallback(7,
+      ::grpc::Service::MarkMethodCallback(8,
           new ::grpc::internal::CallbackUnaryHandler< ::mavsdk::rpc::offboard::SetPositionGlobalRequest, ::mavsdk::rpc::offboard::SetPositionGlobalResponse>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::mavsdk::rpc::offboard::SetPositionGlobalRequest* request, ::mavsdk::rpc::offboard::SetPositionGlobalResponse* response) { return this->SetPositionGlobal(context, request, response); }));}
     void SetMessageAllocatorFor_SetPositionGlobal(
         ::grpc::MessageAllocator< ::mavsdk::rpc::offboard::SetPositionGlobalRequest, ::mavsdk::rpc::offboard::SetPositionGlobalResponse>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(7);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(8);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::mavsdk::rpc::offboard::SetPositionGlobalRequest, ::mavsdk::rpc::offboard::SetPositionGlobalResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -977,13 +1054,13 @@ class OffboardService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_SetVelocityBody() {
-      ::grpc::Service::MarkMethodCallback(8,
+      ::grpc::Service::MarkMethodCallback(9,
           new ::grpc::internal::CallbackUnaryHandler< ::mavsdk::rpc::offboard::SetVelocityBodyRequest, ::mavsdk::rpc::offboard::SetVelocityBodyResponse>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::mavsdk::rpc::offboard::SetVelocityBodyRequest* request, ::mavsdk::rpc::offboard::SetVelocityBodyResponse* response) { return this->SetVelocityBody(context, request, response); }));}
     void SetMessageAllocatorFor_SetVelocityBody(
         ::grpc::MessageAllocator< ::mavsdk::rpc::offboard::SetVelocityBodyRequest, ::mavsdk::rpc::offboard::SetVelocityBodyResponse>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(8);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(9);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::mavsdk::rpc::offboard::SetVelocityBodyRequest, ::mavsdk::rpc::offboard::SetVelocityBodyResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -1004,13 +1081,13 @@ class OffboardService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_SetVelocityNed() {
-      ::grpc::Service::MarkMethodCallback(9,
+      ::grpc::Service::MarkMethodCallback(10,
           new ::grpc::internal::CallbackUnaryHandler< ::mavsdk::rpc::offboard::SetVelocityNedRequest, ::mavsdk::rpc::offboard::SetVelocityNedResponse>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::mavsdk::rpc::offboard::SetVelocityNedRequest* request, ::mavsdk::rpc::offboard::SetVelocityNedResponse* response) { return this->SetVelocityNed(context, request, response); }));}
     void SetMessageAllocatorFor_SetVelocityNed(
         ::grpc::MessageAllocator< ::mavsdk::rpc::offboard::SetVelocityNedRequest, ::mavsdk::rpc::offboard::SetVelocityNedResponse>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(9);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(10);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::mavsdk::rpc::offboard::SetVelocityNedRequest, ::mavsdk::rpc::offboard::SetVelocityNedResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -1031,13 +1108,13 @@ class OffboardService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_SetPositionVelocityNed() {
-      ::grpc::Service::MarkMethodCallback(10,
+      ::grpc::Service::MarkMethodCallback(11,
           new ::grpc::internal::CallbackUnaryHandler< ::mavsdk::rpc::offboard::SetPositionVelocityNedRequest, ::mavsdk::rpc::offboard::SetPositionVelocityNedResponse>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::mavsdk::rpc::offboard::SetPositionVelocityNedRequest* request, ::mavsdk::rpc::offboard::SetPositionVelocityNedResponse* response) { return this->SetPositionVelocityNed(context, request, response); }));}
     void SetMessageAllocatorFor_SetPositionVelocityNed(
         ::grpc::MessageAllocator< ::mavsdk::rpc::offboard::SetPositionVelocityNedRequest, ::mavsdk::rpc::offboard::SetPositionVelocityNedResponse>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(10);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(11);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::mavsdk::rpc::offboard::SetPositionVelocityNedRequest, ::mavsdk::rpc::offboard::SetPositionVelocityNedResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -1058,13 +1135,13 @@ class OffboardService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_SetPositionVelocityAccelerationNed() {
-      ::grpc::Service::MarkMethodCallback(11,
+      ::grpc::Service::MarkMethodCallback(12,
           new ::grpc::internal::CallbackUnaryHandler< ::mavsdk::rpc::offboard::SetPositionVelocityAccelerationNedRequest, ::mavsdk::rpc::offboard::SetPositionVelocityAccelerationNedResponse>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::mavsdk::rpc::offboard::SetPositionVelocityAccelerationNedRequest* request, ::mavsdk::rpc::offboard::SetPositionVelocityAccelerationNedResponse* response) { return this->SetPositionVelocityAccelerationNed(context, request, response); }));}
     void SetMessageAllocatorFor_SetPositionVelocityAccelerationNed(
         ::grpc::MessageAllocator< ::mavsdk::rpc::offboard::SetPositionVelocityAccelerationNedRequest, ::mavsdk::rpc::offboard::SetPositionVelocityAccelerationNedResponse>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(11);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(12);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::mavsdk::rpc::offboard::SetPositionVelocityAccelerationNedRequest, ::mavsdk::rpc::offboard::SetPositionVelocityAccelerationNedResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -1085,13 +1162,13 @@ class OffboardService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_SetAccelerationNed() {
-      ::grpc::Service::MarkMethodCallback(12,
+      ::grpc::Service::MarkMethodCallback(13,
           new ::grpc::internal::CallbackUnaryHandler< ::mavsdk::rpc::offboard::SetAccelerationNedRequest, ::mavsdk::rpc::offboard::SetAccelerationNedResponse>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::mavsdk::rpc::offboard::SetAccelerationNedRequest* request, ::mavsdk::rpc::offboard::SetAccelerationNedResponse* response) { return this->SetAccelerationNed(context, request, response); }));}
     void SetMessageAllocatorFor_SetAccelerationNed(
         ::grpc::MessageAllocator< ::mavsdk::rpc::offboard::SetAccelerationNedRequest, ::mavsdk::rpc::offboard::SetAccelerationNedResponse>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(12);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(13);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::mavsdk::rpc::offboard::SetAccelerationNedRequest, ::mavsdk::rpc::offboard::SetAccelerationNedResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -1106,7 +1183,7 @@ class OffboardService final {
     virtual ::grpc::ServerUnaryReactor* SetAccelerationNed(
       ::grpc::CallbackServerContext* /*context*/, const ::mavsdk::rpc::offboard::SetAccelerationNedRequest* /*request*/, ::mavsdk::rpc::offboard::SetAccelerationNedResponse* /*response*/)  { return nullptr; }
   };
-  typedef WithCallbackMethod_Start<WithCallbackMethod_Stop<WithCallbackMethod_IsActive<WithCallbackMethod_SetAttitude<WithCallbackMethod_SetActuatorControl<WithCallbackMethod_SetAttitudeRate<WithCallbackMethod_SetPositionNed<WithCallbackMethod_SetPositionGlobal<WithCallbackMethod_SetVelocityBody<WithCallbackMethod_SetVelocityNed<WithCallbackMethod_SetPositionVelocityNed<WithCallbackMethod_SetPositionVelocityAccelerationNed<WithCallbackMethod_SetAccelerationNed<Service > > > > > > > > > > > > > CallbackService;
+  typedef WithCallbackMethod_Start<WithCallbackMethod_Stop<WithCallbackMethod_IsActive<WithCallbackMethod_SetAttitude<WithCallbackMethod_SetAttitudeQuaternion<WithCallbackMethod_SetActuatorControl<WithCallbackMethod_SetAttitudeRate<WithCallbackMethod_SetPositionNed<WithCallbackMethod_SetPositionGlobal<WithCallbackMethod_SetVelocityBody<WithCallbackMethod_SetVelocityNed<WithCallbackMethod_SetPositionVelocityNed<WithCallbackMethod_SetPositionVelocityAccelerationNed<WithCallbackMethod_SetAccelerationNed<Service > > > > > > > > > > > > > > CallbackService;
   typedef CallbackService ExperimentalCallbackService;
   template <class BaseClass>
   class WithGenericMethod_Start : public BaseClass {
@@ -1177,12 +1254,29 @@ class OffboardService final {
     }
   };
   template <class BaseClass>
+  class WithGenericMethod_SetAttitudeQuaternion : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_SetAttitudeQuaternion() {
+      ::grpc::Service::MarkMethodGeneric(4);
+    }
+    ~WithGenericMethod_SetAttitudeQuaternion() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SetAttitudeQuaternion(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::offboard::SetAttitudeQuaternionRequest* /*request*/, ::mavsdk::rpc::offboard::SetAttitudeQuaternionResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
   class WithGenericMethod_SetActuatorControl : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_SetActuatorControl() {
-      ::grpc::Service::MarkMethodGeneric(4);
+      ::grpc::Service::MarkMethodGeneric(5);
     }
     ~WithGenericMethod_SetActuatorControl() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1199,7 +1293,7 @@ class OffboardService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_SetAttitudeRate() {
-      ::grpc::Service::MarkMethodGeneric(5);
+      ::grpc::Service::MarkMethodGeneric(6);
     }
     ~WithGenericMethod_SetAttitudeRate() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1216,7 +1310,7 @@ class OffboardService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_SetPositionNed() {
-      ::grpc::Service::MarkMethodGeneric(6);
+      ::grpc::Service::MarkMethodGeneric(7);
     }
     ~WithGenericMethod_SetPositionNed() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1233,7 +1327,7 @@ class OffboardService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_SetPositionGlobal() {
-      ::grpc::Service::MarkMethodGeneric(7);
+      ::grpc::Service::MarkMethodGeneric(8);
     }
     ~WithGenericMethod_SetPositionGlobal() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1250,7 +1344,7 @@ class OffboardService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_SetVelocityBody() {
-      ::grpc::Service::MarkMethodGeneric(8);
+      ::grpc::Service::MarkMethodGeneric(9);
     }
     ~WithGenericMethod_SetVelocityBody() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1267,7 +1361,7 @@ class OffboardService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_SetVelocityNed() {
-      ::grpc::Service::MarkMethodGeneric(9);
+      ::grpc::Service::MarkMethodGeneric(10);
     }
     ~WithGenericMethod_SetVelocityNed() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1284,7 +1378,7 @@ class OffboardService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_SetPositionVelocityNed() {
-      ::grpc::Service::MarkMethodGeneric(10);
+      ::grpc::Service::MarkMethodGeneric(11);
     }
     ~WithGenericMethod_SetPositionVelocityNed() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1301,7 +1395,7 @@ class OffboardService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_SetPositionVelocityAccelerationNed() {
-      ::grpc::Service::MarkMethodGeneric(11);
+      ::grpc::Service::MarkMethodGeneric(12);
     }
     ~WithGenericMethod_SetPositionVelocityAccelerationNed() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1318,7 +1412,7 @@ class OffboardService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_SetAccelerationNed() {
-      ::grpc::Service::MarkMethodGeneric(12);
+      ::grpc::Service::MarkMethodGeneric(13);
     }
     ~WithGenericMethod_SetAccelerationNed() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1410,12 +1504,32 @@ class OffboardService final {
     }
   };
   template <class BaseClass>
+  class WithRawMethod_SetAttitudeQuaternion : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_SetAttitudeQuaternion() {
+      ::grpc::Service::MarkMethodRaw(4);
+    }
+    ~WithRawMethod_SetAttitudeQuaternion() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SetAttitudeQuaternion(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::offboard::SetAttitudeQuaternionRequest* /*request*/, ::mavsdk::rpc::offboard::SetAttitudeQuaternionResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestSetAttitudeQuaternion(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(4, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
   class WithRawMethod_SetActuatorControl : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_SetActuatorControl() {
-      ::grpc::Service::MarkMethodRaw(4);
+      ::grpc::Service::MarkMethodRaw(5);
     }
     ~WithRawMethod_SetActuatorControl() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1426,7 +1540,7 @@ class OffboardService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetActuatorControl(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(4, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(5, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1435,7 +1549,7 @@ class OffboardService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_SetAttitudeRate() {
-      ::grpc::Service::MarkMethodRaw(5);
+      ::grpc::Service::MarkMethodRaw(6);
     }
     ~WithRawMethod_SetAttitudeRate() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1446,7 +1560,7 @@ class OffboardService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetAttitudeRate(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(5, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(6, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1455,7 +1569,7 @@ class OffboardService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_SetPositionNed() {
-      ::grpc::Service::MarkMethodRaw(6);
+      ::grpc::Service::MarkMethodRaw(7);
     }
     ~WithRawMethod_SetPositionNed() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1466,7 +1580,7 @@ class OffboardService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetPositionNed(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(6, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(7, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1475,7 +1589,7 @@ class OffboardService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_SetPositionGlobal() {
-      ::grpc::Service::MarkMethodRaw(7);
+      ::grpc::Service::MarkMethodRaw(8);
     }
     ~WithRawMethod_SetPositionGlobal() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1486,7 +1600,7 @@ class OffboardService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetPositionGlobal(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(7, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(8, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1495,7 +1609,7 @@ class OffboardService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_SetVelocityBody() {
-      ::grpc::Service::MarkMethodRaw(8);
+      ::grpc::Service::MarkMethodRaw(9);
     }
     ~WithRawMethod_SetVelocityBody() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1506,7 +1620,7 @@ class OffboardService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetVelocityBody(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(8, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(9, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1515,7 +1629,7 @@ class OffboardService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_SetVelocityNed() {
-      ::grpc::Service::MarkMethodRaw(9);
+      ::grpc::Service::MarkMethodRaw(10);
     }
     ~WithRawMethod_SetVelocityNed() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1526,7 +1640,7 @@ class OffboardService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetVelocityNed(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(9, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(10, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1535,7 +1649,7 @@ class OffboardService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_SetPositionVelocityNed() {
-      ::grpc::Service::MarkMethodRaw(10);
+      ::grpc::Service::MarkMethodRaw(11);
     }
     ~WithRawMethod_SetPositionVelocityNed() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1546,7 +1660,7 @@ class OffboardService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetPositionVelocityNed(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(10, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(11, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1555,7 +1669,7 @@ class OffboardService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_SetPositionVelocityAccelerationNed() {
-      ::grpc::Service::MarkMethodRaw(11);
+      ::grpc::Service::MarkMethodRaw(12);
     }
     ~WithRawMethod_SetPositionVelocityAccelerationNed() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1566,7 +1680,7 @@ class OffboardService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetPositionVelocityAccelerationNed(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(11, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(12, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1575,7 +1689,7 @@ class OffboardService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_SetAccelerationNed() {
-      ::grpc::Service::MarkMethodRaw(12);
+      ::grpc::Service::MarkMethodRaw(13);
     }
     ~WithRawMethod_SetAccelerationNed() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1586,7 +1700,7 @@ class OffboardService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetAccelerationNed(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(12, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(13, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1678,12 +1792,34 @@ class OffboardService final {
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
+  class WithRawCallbackMethod_SetAttitudeQuaternion : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_SetAttitudeQuaternion() {
+      ::grpc::Service::MarkMethodRawCallback(4,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->SetAttitudeQuaternion(context, request, response); }));
+    }
+    ~WithRawCallbackMethod_SetAttitudeQuaternion() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SetAttitudeQuaternion(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::offboard::SetAttitudeQuaternionRequest* /*request*/, ::mavsdk::rpc::offboard::SetAttitudeQuaternionResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* SetAttitudeQuaternion(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
   class WithRawCallbackMethod_SetActuatorControl : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_SetActuatorControl() {
-      ::grpc::Service::MarkMethodRawCallback(4,
+      ::grpc::Service::MarkMethodRawCallback(5,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->SetActuatorControl(context, request, response); }));
@@ -1705,7 +1841,7 @@ class OffboardService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_SetAttitudeRate() {
-      ::grpc::Service::MarkMethodRawCallback(5,
+      ::grpc::Service::MarkMethodRawCallback(6,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->SetAttitudeRate(context, request, response); }));
@@ -1727,7 +1863,7 @@ class OffboardService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_SetPositionNed() {
-      ::grpc::Service::MarkMethodRawCallback(6,
+      ::grpc::Service::MarkMethodRawCallback(7,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->SetPositionNed(context, request, response); }));
@@ -1749,7 +1885,7 @@ class OffboardService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_SetPositionGlobal() {
-      ::grpc::Service::MarkMethodRawCallback(7,
+      ::grpc::Service::MarkMethodRawCallback(8,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->SetPositionGlobal(context, request, response); }));
@@ -1771,7 +1907,7 @@ class OffboardService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_SetVelocityBody() {
-      ::grpc::Service::MarkMethodRawCallback(8,
+      ::grpc::Service::MarkMethodRawCallback(9,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->SetVelocityBody(context, request, response); }));
@@ -1793,7 +1929,7 @@ class OffboardService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_SetVelocityNed() {
-      ::grpc::Service::MarkMethodRawCallback(9,
+      ::grpc::Service::MarkMethodRawCallback(10,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->SetVelocityNed(context, request, response); }));
@@ -1815,7 +1951,7 @@ class OffboardService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_SetPositionVelocityNed() {
-      ::grpc::Service::MarkMethodRawCallback(10,
+      ::grpc::Service::MarkMethodRawCallback(11,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->SetPositionVelocityNed(context, request, response); }));
@@ -1837,7 +1973,7 @@ class OffboardService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_SetPositionVelocityAccelerationNed() {
-      ::grpc::Service::MarkMethodRawCallback(11,
+      ::grpc::Service::MarkMethodRawCallback(12,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->SetPositionVelocityAccelerationNed(context, request, response); }));
@@ -1859,7 +1995,7 @@ class OffboardService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_SetAccelerationNed() {
-      ::grpc::Service::MarkMethodRawCallback(12,
+      ::grpc::Service::MarkMethodRawCallback(13,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->SetAccelerationNed(context, request, response); }));
@@ -1984,12 +2120,39 @@ class OffboardService final {
     virtual ::grpc::Status StreamedSetAttitude(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::mavsdk::rpc::offboard::SetAttitudeRequest,::mavsdk::rpc::offboard::SetAttitudeResponse>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
+  class WithStreamedUnaryMethod_SetAttitudeQuaternion : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_SetAttitudeQuaternion() {
+      ::grpc::Service::MarkMethodStreamed(4,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::mavsdk::rpc::offboard::SetAttitudeQuaternionRequest, ::mavsdk::rpc::offboard::SetAttitudeQuaternionResponse>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::mavsdk::rpc::offboard::SetAttitudeQuaternionRequest, ::mavsdk::rpc::offboard::SetAttitudeQuaternionResponse>* streamer) {
+                       return this->StreamedSetAttitudeQuaternion(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_SetAttitudeQuaternion() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status SetAttitudeQuaternion(::grpc::ServerContext* /*context*/, const ::mavsdk::rpc::offboard::SetAttitudeQuaternionRequest* /*request*/, ::mavsdk::rpc::offboard::SetAttitudeQuaternionResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedSetAttitudeQuaternion(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::mavsdk::rpc::offboard::SetAttitudeQuaternionRequest,::mavsdk::rpc::offboard::SetAttitudeQuaternionResponse>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
   class WithStreamedUnaryMethod_SetActuatorControl : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_SetActuatorControl() {
-      ::grpc::Service::MarkMethodStreamed(4,
+      ::grpc::Service::MarkMethodStreamed(5,
         new ::grpc::internal::StreamedUnaryHandler<
           ::mavsdk::rpc::offboard::SetActuatorControlRequest, ::mavsdk::rpc::offboard::SetActuatorControlResponse>(
             [this](::grpc::ServerContext* context,
@@ -2016,7 +2179,7 @@ class OffboardService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_SetAttitudeRate() {
-      ::grpc::Service::MarkMethodStreamed(5,
+      ::grpc::Service::MarkMethodStreamed(6,
         new ::grpc::internal::StreamedUnaryHandler<
           ::mavsdk::rpc::offboard::SetAttitudeRateRequest, ::mavsdk::rpc::offboard::SetAttitudeRateResponse>(
             [this](::grpc::ServerContext* context,
@@ -2043,7 +2206,7 @@ class OffboardService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_SetPositionNed() {
-      ::grpc::Service::MarkMethodStreamed(6,
+      ::grpc::Service::MarkMethodStreamed(7,
         new ::grpc::internal::StreamedUnaryHandler<
           ::mavsdk::rpc::offboard::SetPositionNedRequest, ::mavsdk::rpc::offboard::SetPositionNedResponse>(
             [this](::grpc::ServerContext* context,
@@ -2070,7 +2233,7 @@ class OffboardService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_SetPositionGlobal() {
-      ::grpc::Service::MarkMethodStreamed(7,
+      ::grpc::Service::MarkMethodStreamed(8,
         new ::grpc::internal::StreamedUnaryHandler<
           ::mavsdk::rpc::offboard::SetPositionGlobalRequest, ::mavsdk::rpc::offboard::SetPositionGlobalResponse>(
             [this](::grpc::ServerContext* context,
@@ -2097,7 +2260,7 @@ class OffboardService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_SetVelocityBody() {
-      ::grpc::Service::MarkMethodStreamed(8,
+      ::grpc::Service::MarkMethodStreamed(9,
         new ::grpc::internal::StreamedUnaryHandler<
           ::mavsdk::rpc::offboard::SetVelocityBodyRequest, ::mavsdk::rpc::offboard::SetVelocityBodyResponse>(
             [this](::grpc::ServerContext* context,
@@ -2124,7 +2287,7 @@ class OffboardService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_SetVelocityNed() {
-      ::grpc::Service::MarkMethodStreamed(9,
+      ::grpc::Service::MarkMethodStreamed(10,
         new ::grpc::internal::StreamedUnaryHandler<
           ::mavsdk::rpc::offboard::SetVelocityNedRequest, ::mavsdk::rpc::offboard::SetVelocityNedResponse>(
             [this](::grpc::ServerContext* context,
@@ -2151,7 +2314,7 @@ class OffboardService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_SetPositionVelocityNed() {
-      ::grpc::Service::MarkMethodStreamed(10,
+      ::grpc::Service::MarkMethodStreamed(11,
         new ::grpc::internal::StreamedUnaryHandler<
           ::mavsdk::rpc::offboard::SetPositionVelocityNedRequest, ::mavsdk::rpc::offboard::SetPositionVelocityNedResponse>(
             [this](::grpc::ServerContext* context,
@@ -2178,7 +2341,7 @@ class OffboardService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_SetPositionVelocityAccelerationNed() {
-      ::grpc::Service::MarkMethodStreamed(11,
+      ::grpc::Service::MarkMethodStreamed(12,
         new ::grpc::internal::StreamedUnaryHandler<
           ::mavsdk::rpc::offboard::SetPositionVelocityAccelerationNedRequest, ::mavsdk::rpc::offboard::SetPositionVelocityAccelerationNedResponse>(
             [this](::grpc::ServerContext* context,
@@ -2205,7 +2368,7 @@ class OffboardService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_SetAccelerationNed() {
-      ::grpc::Service::MarkMethodStreamed(12,
+      ::grpc::Service::MarkMethodStreamed(13,
         new ::grpc::internal::StreamedUnaryHandler<
           ::mavsdk::rpc::offboard::SetAccelerationNedRequest, ::mavsdk::rpc::offboard::SetAccelerationNedResponse>(
             [this](::grpc::ServerContext* context,
@@ -2226,9 +2389,9 @@ class OffboardService final {
     // replace default version of method with streamed unary
     virtual ::grpc::Status StreamedSetAccelerationNed(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::mavsdk::rpc::offboard::SetAccelerationNedRequest,::mavsdk::rpc::offboard::SetAccelerationNedResponse>* server_unary_streamer) = 0;
   };
-  typedef WithStreamedUnaryMethod_Start<WithStreamedUnaryMethod_Stop<WithStreamedUnaryMethod_IsActive<WithStreamedUnaryMethod_SetAttitude<WithStreamedUnaryMethod_SetActuatorControl<WithStreamedUnaryMethod_SetAttitudeRate<WithStreamedUnaryMethod_SetPositionNed<WithStreamedUnaryMethod_SetPositionGlobal<WithStreamedUnaryMethod_SetVelocityBody<WithStreamedUnaryMethod_SetVelocityNed<WithStreamedUnaryMethod_SetPositionVelocityNed<WithStreamedUnaryMethod_SetPositionVelocityAccelerationNed<WithStreamedUnaryMethod_SetAccelerationNed<Service > > > > > > > > > > > > > StreamedUnaryService;
+  typedef WithStreamedUnaryMethod_Start<WithStreamedUnaryMethod_Stop<WithStreamedUnaryMethod_IsActive<WithStreamedUnaryMethod_SetAttitude<WithStreamedUnaryMethod_SetAttitudeQuaternion<WithStreamedUnaryMethod_SetActuatorControl<WithStreamedUnaryMethod_SetAttitudeRate<WithStreamedUnaryMethod_SetPositionNed<WithStreamedUnaryMethod_SetPositionGlobal<WithStreamedUnaryMethod_SetVelocityBody<WithStreamedUnaryMethod_SetVelocityNed<WithStreamedUnaryMethod_SetPositionVelocityNed<WithStreamedUnaryMethod_SetPositionVelocityAccelerationNed<WithStreamedUnaryMethod_SetAccelerationNed<Service > > > > > > > > > > > > > > StreamedUnaryService;
   typedef Service SplitStreamedService;
-  typedef WithStreamedUnaryMethod_Start<WithStreamedUnaryMethod_Stop<WithStreamedUnaryMethod_IsActive<WithStreamedUnaryMethod_SetAttitude<WithStreamedUnaryMethod_SetActuatorControl<WithStreamedUnaryMethod_SetAttitudeRate<WithStreamedUnaryMethod_SetPositionNed<WithStreamedUnaryMethod_SetPositionGlobal<WithStreamedUnaryMethod_SetVelocityBody<WithStreamedUnaryMethod_SetVelocityNed<WithStreamedUnaryMethod_SetPositionVelocityNed<WithStreamedUnaryMethod_SetPositionVelocityAccelerationNed<WithStreamedUnaryMethod_SetAccelerationNed<Service > > > > > > > > > > > > > StreamedService;
+  typedef WithStreamedUnaryMethod_Start<WithStreamedUnaryMethod_Stop<WithStreamedUnaryMethod_IsActive<WithStreamedUnaryMethod_SetAttitude<WithStreamedUnaryMethod_SetAttitudeQuaternion<WithStreamedUnaryMethod_SetActuatorControl<WithStreamedUnaryMethod_SetAttitudeRate<WithStreamedUnaryMethod_SetPositionNed<WithStreamedUnaryMethod_SetPositionGlobal<WithStreamedUnaryMethod_SetVelocityBody<WithStreamedUnaryMethod_SetVelocityNed<WithStreamedUnaryMethod_SetPositionVelocityNed<WithStreamedUnaryMethod_SetPositionVelocityAccelerationNed<WithStreamedUnaryMethod_SetAccelerationNed<Service > > > > > > > > > > > > > > StreamedService;
 };
 
 }  // namespace offboard

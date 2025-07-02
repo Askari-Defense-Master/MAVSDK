@@ -2,20 +2,20 @@
 /**
  * @brief {{ method_description | replace('\n', '\n *')}}
  *
- * This function is non-blocking.{% if is_sync %} See '{{ name.lower_snake_case }}' for the blocking counterpart.{% endif %}
+ * This function is non-blocking.{% if is_sync %} See '{% if name.lower_snake_case == "set_attitude_quaternion" %}set_attitude{% else %}{{ name.lower_snake_case }}{% endif %}' for the blocking counterpart.{% endif %}
  */
-void {{ name.lower_snake_case }}_async({% for param in params %}{% if param.type_info.name.endswith("Result") %}Result{% else %}{{ param.type_info.name }}{% endif %} {{ param.name.lower_snake_case }}, {% endfor %}const ResultCallback callback);
+void {% if name.lower_snake_case == "set_attitude_quaternion" %}set_attitude{% else %}{{ name.lower_snake_case }}{% endif %}_async({% for param in params %}{% if param.type_info.name.endswith("Result") %}Result{% else %}{{ param.type_info.name }}{% endif %} {{ param.name.lower_snake_case }}, {% endfor %}const ResultCallback callback);
 {% endif %}
 
 {% if is_sync %}
 /**
  * @brief {{ method_description | replace('\n', '\n *')}}
  *
- * This function is blocking.{% if is_async %} See '{{ name.lower_snake_case }}_async' for the non-blocking counterpart.{% endif %}
+ * This function is blocking.{% if is_async %} See '{% if name.lower_snake_case == "set_attitude_quaternion" %}set_attitude{% else %}{{ name.lower_snake_case }}{% endif %}_async' for the non-blocking counterpart.{% endif %}
  *
  {% if has_result %}
  * @return Result of request.
  {% endif %}
  */
-{% if has_result %}Result{% else %}void{% endif %} {{ name.lower_snake_case }}({% for param in params %}{% if param.type_info.name.endswith("Result") %}Result{% else %}{{ param.type_info.name }}{% endif %} {{ param.name.lower_snake_case }}{{ ", " if not loop.last }}{% endfor %}) const;
+{% if has_result %}Result{% else %}void{% endif %} {% if name.lower_snake_case == "set_attitude_quaternion" %}set_attitude{% else %}{{ name.lower_snake_case }}{% endif %}({% for param in params %}{% if param.type_info.name.endswith("Result") %}Result{% else %}{{ param.type_info.name }}{% endif %} {{ param.name.lower_snake_case }}{{ ", " if not loop.last }}{% endfor %}) const;
 {% endif %}

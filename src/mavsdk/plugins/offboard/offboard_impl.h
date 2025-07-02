@@ -41,6 +41,7 @@ public:
     Offboard::Result set_acceleration_ned(Offboard::AccelerationNed acceleration_ned);
     Offboard::Result set_velocity_body(Offboard::VelocityBodyYawspeed velocity_body_yawspeed);
     Offboard::Result set_attitude(Offboard::Attitude attitude);
+    Offboard::Result set_attitude(Offboard::AttitudeQuaternion attitude_quaternion);
     Offboard::Result set_attitude_rate(Offboard::AttitudeRate attitude_rate);
     Offboard::Result set_actuator_control(Offboard::ActuatorControl actuator_control);
 
@@ -57,6 +58,7 @@ private:
     Offboard::Result send_velocity_body();
     Offboard::Result send_attitude_rate();
     Offboard::Result send_attitude();
+    Offboard::Result send_attitude_quaternion();
     Offboard::Result send_actuator_control();
     Offboard::Result send_actuator_control_message(const float* controls, uint8_t group_number = 0);
 
@@ -83,6 +85,7 @@ private:
         AccelerationNed,
         VelocityBody,
         Attitude,
+        AttitudeQuaternion,
         AttitudeRate,
         ActuatorControl
     } _mode = Mode::NotActive;
@@ -92,6 +95,7 @@ private:
     Offboard::AccelerationNed _acceleration_ned{};
     Offboard::VelocityBodyYawspeed _velocity_body_yawspeed{};
     Offboard::Attitude _attitude{};
+    Offboard::AttitudeQuaternion _attitude_quaternion{};
     Offboard::AttitudeRate _attitude_rate{};
     Offboard::ActuatorControl _actuator_control{};
     SteadyTimePoint _last_started{};

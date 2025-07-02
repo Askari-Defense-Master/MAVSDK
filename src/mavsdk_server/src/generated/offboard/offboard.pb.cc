@@ -276,6 +276,35 @@ struct AttitudeRateDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 AttitudeRateDefaultTypeInternal _AttitudeRate_default_instance_;
 
+inline constexpr AttitudeQuaternion::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : w_{0},
+        x_{0},
+        y_{0},
+        z_{0},
+        thrust_value_{0},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR AttitudeQuaternion::AttitudeQuaternion(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct AttitudeQuaternionDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR AttitudeQuaternionDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~AttitudeQuaternionDefaultTypeInternal() {}
+  union {
+    AttitudeQuaternion _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 AttitudeQuaternionDefaultTypeInternal _AttitudeQuaternion_default_instance_;
+
 inline constexpr Attitude::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : roll_deg_{0},
@@ -809,6 +838,56 @@ struct SetAttitudeRateRequestDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SetAttitudeRateRequestDefaultTypeInternal _SetAttitudeRateRequest_default_instance_;
 
+inline constexpr SetAttitudeQuaternionResponse::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        offboard_result_{nullptr} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR SetAttitudeQuaternionResponse::SetAttitudeQuaternionResponse(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct SetAttitudeQuaternionResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SetAttitudeQuaternionResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SetAttitudeQuaternionResponseDefaultTypeInternal() {}
+  union {
+    SetAttitudeQuaternionResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SetAttitudeQuaternionResponseDefaultTypeInternal _SetAttitudeQuaternionResponse_default_instance_;
+
+inline constexpr SetAttitudeQuaternionRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        attitude_quaternion_{nullptr} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR SetAttitudeQuaternionRequest::SetAttitudeQuaternionRequest(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct SetAttitudeQuaternionRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SetAttitudeQuaternionRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SetAttitudeQuaternionRequestDefaultTypeInternal() {}
+  union {
+    SetAttitudeQuaternionRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SetAttitudeQuaternionRequestDefaultTypeInternal _SetAttitudeQuaternionRequest_default_instance_;
+
 inline constexpr SetActuatorControlResponse::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : _cached_size_{0},
@@ -1015,6 +1094,26 @@ const ::uint32_t
         ~0u,  // no sizeof(Split)
         PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::offboard::SetAttitudeResponse, _impl_.offboard_result_),
         0,
+        PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::offboard::SetAttitudeQuaternionRequest, _impl_._has_bits_),
+        PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::offboard::SetAttitudeQuaternionRequest, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::offboard::SetAttitudeQuaternionRequest, _impl_.attitude_quaternion_),
+        0,
+        PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::offboard::SetAttitudeQuaternionResponse, _impl_._has_bits_),
+        PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::offboard::SetAttitudeQuaternionResponse, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::offboard::SetAttitudeQuaternionResponse, _impl_.offboard_result_),
+        0,
         PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::offboard::SetActuatorControlRequest, _impl_._has_bits_),
         PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::offboard::SetActuatorControlRequest, _internal_metadata_),
         ~0u,  // no _extensions_
@@ -1214,6 +1313,19 @@ const ::uint32_t
         PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::offboard::Attitude, _impl_.yaw_deg_),
         PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::offboard::Attitude, _impl_.thrust_value_),
         ~0u,  // no _has_bits_
+        PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::offboard::AttitudeQuaternion, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::offboard::AttitudeQuaternion, _impl_.w_),
+        PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::offboard::AttitudeQuaternion, _impl_.x_),
+        PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::offboard::AttitudeQuaternion, _impl_.y_),
+        PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::offboard::AttitudeQuaternion, _impl_.z_),
+        PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::offboard::AttitudeQuaternion, _impl_.thrust_value_),
+        ~0u,  // no _has_bits_
         PROTOBUF_FIELD_OFFSET(::mavsdk::rpc::offboard::ActuatorControlGroup, _internal_metadata_),
         ~0u,  // no _extensions_
         ~0u,  // no _oneof_case_
@@ -1325,34 +1437,37 @@ static const ::_pbi::MigrationSchema
         {44, -1, -1, sizeof(::mavsdk::rpc::offboard::IsActiveResponse)},
         {53, 62, -1, sizeof(::mavsdk::rpc::offboard::SetAttitudeRequest)},
         {63, 72, -1, sizeof(::mavsdk::rpc::offboard::SetAttitudeResponse)},
-        {73, 82, -1, sizeof(::mavsdk::rpc::offboard::SetActuatorControlRequest)},
-        {83, 92, -1, sizeof(::mavsdk::rpc::offboard::SetActuatorControlResponse)},
-        {93, 102, -1, sizeof(::mavsdk::rpc::offboard::SetAttitudeRateRequest)},
-        {103, 112, -1, sizeof(::mavsdk::rpc::offboard::SetAttitudeRateResponse)},
-        {113, 122, -1, sizeof(::mavsdk::rpc::offboard::SetPositionNedRequest)},
-        {123, 132, -1, sizeof(::mavsdk::rpc::offboard::SetPositionNedResponse)},
-        {133, 142, -1, sizeof(::mavsdk::rpc::offboard::SetPositionGlobalRequest)},
-        {143, 152, -1, sizeof(::mavsdk::rpc::offboard::SetPositionGlobalResponse)},
-        {153, 162, -1, sizeof(::mavsdk::rpc::offboard::SetVelocityBodyRequest)},
-        {163, 172, -1, sizeof(::mavsdk::rpc::offboard::SetVelocityBodyResponse)},
-        {173, 182, -1, sizeof(::mavsdk::rpc::offboard::SetVelocityNedRequest)},
-        {183, 192, -1, sizeof(::mavsdk::rpc::offboard::SetVelocityNedResponse)},
-        {193, 203, -1, sizeof(::mavsdk::rpc::offboard::SetPositionVelocityNedRequest)},
-        {205, 216, -1, sizeof(::mavsdk::rpc::offboard::SetPositionVelocityAccelerationNedRequest)},
-        {219, 228, -1, sizeof(::mavsdk::rpc::offboard::SetPositionVelocityNedResponse)},
-        {229, 238, -1, sizeof(::mavsdk::rpc::offboard::SetPositionVelocityAccelerationNedResponse)},
-        {239, 248, -1, sizeof(::mavsdk::rpc::offboard::SetAccelerationNedRequest)},
-        {249, 258, -1, sizeof(::mavsdk::rpc::offboard::SetAccelerationNedResponse)},
-        {259, -1, -1, sizeof(::mavsdk::rpc::offboard::Attitude)},
-        {271, -1, -1, sizeof(::mavsdk::rpc::offboard::ActuatorControlGroup)},
-        {280, -1, -1, sizeof(::mavsdk::rpc::offboard::ActuatorControl)},
-        {289, -1, -1, sizeof(::mavsdk::rpc::offboard::AttitudeRate)},
-        {301, -1, -1, sizeof(::mavsdk::rpc::offboard::PositionNedYaw)},
-        {313, -1, -1, sizeof(::mavsdk::rpc::offboard::PositionGlobalYaw)},
-        {326, -1, -1, sizeof(::mavsdk::rpc::offboard::VelocityBodyYawspeed)},
-        {338, -1, -1, sizeof(::mavsdk::rpc::offboard::VelocityNedYaw)},
-        {350, -1, -1, sizeof(::mavsdk::rpc::offboard::AccelerationNed)},
-        {361, -1, -1, sizeof(::mavsdk::rpc::offboard::OffboardResult)},
+        {73, 82, -1, sizeof(::mavsdk::rpc::offboard::SetAttitudeQuaternionRequest)},
+        {83, 92, -1, sizeof(::mavsdk::rpc::offboard::SetAttitudeQuaternionResponse)},
+        {93, 102, -1, sizeof(::mavsdk::rpc::offboard::SetActuatorControlRequest)},
+        {103, 112, -1, sizeof(::mavsdk::rpc::offboard::SetActuatorControlResponse)},
+        {113, 122, -1, sizeof(::mavsdk::rpc::offboard::SetAttitudeRateRequest)},
+        {123, 132, -1, sizeof(::mavsdk::rpc::offboard::SetAttitudeRateResponse)},
+        {133, 142, -1, sizeof(::mavsdk::rpc::offboard::SetPositionNedRequest)},
+        {143, 152, -1, sizeof(::mavsdk::rpc::offboard::SetPositionNedResponse)},
+        {153, 162, -1, sizeof(::mavsdk::rpc::offboard::SetPositionGlobalRequest)},
+        {163, 172, -1, sizeof(::mavsdk::rpc::offboard::SetPositionGlobalResponse)},
+        {173, 182, -1, sizeof(::mavsdk::rpc::offboard::SetVelocityBodyRequest)},
+        {183, 192, -1, sizeof(::mavsdk::rpc::offboard::SetVelocityBodyResponse)},
+        {193, 202, -1, sizeof(::mavsdk::rpc::offboard::SetVelocityNedRequest)},
+        {203, 212, -1, sizeof(::mavsdk::rpc::offboard::SetVelocityNedResponse)},
+        {213, 223, -1, sizeof(::mavsdk::rpc::offboard::SetPositionVelocityNedRequest)},
+        {225, 236, -1, sizeof(::mavsdk::rpc::offboard::SetPositionVelocityAccelerationNedRequest)},
+        {239, 248, -1, sizeof(::mavsdk::rpc::offboard::SetPositionVelocityNedResponse)},
+        {249, 258, -1, sizeof(::mavsdk::rpc::offboard::SetPositionVelocityAccelerationNedResponse)},
+        {259, 268, -1, sizeof(::mavsdk::rpc::offboard::SetAccelerationNedRequest)},
+        {269, 278, -1, sizeof(::mavsdk::rpc::offboard::SetAccelerationNedResponse)},
+        {279, -1, -1, sizeof(::mavsdk::rpc::offboard::Attitude)},
+        {291, -1, -1, sizeof(::mavsdk::rpc::offboard::AttitudeQuaternion)},
+        {304, -1, -1, sizeof(::mavsdk::rpc::offboard::ActuatorControlGroup)},
+        {313, -1, -1, sizeof(::mavsdk::rpc::offboard::ActuatorControl)},
+        {322, -1, -1, sizeof(::mavsdk::rpc::offboard::AttitudeRate)},
+        {334, -1, -1, sizeof(::mavsdk::rpc::offboard::PositionNedYaw)},
+        {346, -1, -1, sizeof(::mavsdk::rpc::offboard::PositionGlobalYaw)},
+        {359, -1, -1, sizeof(::mavsdk::rpc::offboard::VelocityBodyYawspeed)},
+        {371, -1, -1, sizeof(::mavsdk::rpc::offboard::VelocityNedYaw)},
+        {383, -1, -1, sizeof(::mavsdk::rpc::offboard::AccelerationNed)},
+        {394, -1, -1, sizeof(::mavsdk::rpc::offboard::OffboardResult)},
 };
 static const ::_pb::Message* const file_default_instances[] = {
     &::mavsdk::rpc::offboard::_StartRequest_default_instance_._instance,
@@ -1363,6 +1478,8 @@ static const ::_pb::Message* const file_default_instances[] = {
     &::mavsdk::rpc::offboard::_IsActiveResponse_default_instance_._instance,
     &::mavsdk::rpc::offboard::_SetAttitudeRequest_default_instance_._instance,
     &::mavsdk::rpc::offboard::_SetAttitudeResponse_default_instance_._instance,
+    &::mavsdk::rpc::offboard::_SetAttitudeQuaternionRequest_default_instance_._instance,
+    &::mavsdk::rpc::offboard::_SetAttitudeQuaternionResponse_default_instance_._instance,
     &::mavsdk::rpc::offboard::_SetActuatorControlRequest_default_instance_._instance,
     &::mavsdk::rpc::offboard::_SetActuatorControlResponse_default_instance_._instance,
     &::mavsdk::rpc::offboard::_SetAttitudeRateRequest_default_instance_._instance,
@@ -1382,6 +1499,7 @@ static const ::_pb::Message* const file_default_instances[] = {
     &::mavsdk::rpc::offboard::_SetAccelerationNedRequest_default_instance_._instance,
     &::mavsdk::rpc::offboard::_SetAccelerationNedResponse_default_instance_._instance,
     &::mavsdk::rpc::offboard::_Attitude_default_instance_._instance,
+    &::mavsdk::rpc::offboard::_AttitudeQuaternion_default_instance_._instance,
     &::mavsdk::rpc::offboard::_ActuatorControlGroup_default_instance_._instance,
     &::mavsdk::rpc::offboard::_ActuatorControl_default_instance_._instance,
     &::mavsdk::rpc::offboard::_AttitudeRate_default_instance_._instance,
@@ -1405,124 +1523,134 @@ const char descriptor_table_protodef_offboard_2foffboard_2eproto[] ABSL_ATTRIBUT
     "tAttitudeRequest\022/\n\010attitude\030\001 \001(\0132\035.mav"
     "sdk.rpc.offboard.Attitude\"S\n\023SetAttitude"
     "Response\022<\n\017offboard_result\030\001 \001(\0132#.mavs"
-    "dk.rpc.offboard.OffboardResult\"[\n\031SetAct"
-    "uatorControlRequest\022>\n\020actuator_control\030"
-    "\001 \001(\0132$.mavsdk.rpc.offboard.ActuatorCont"
-    "rol\"Z\n\032SetActuatorControlResponse\022<\n\017off"
-    "board_result\030\001 \001(\0132#.mavsdk.rpc.offboard"
-    ".OffboardResult\"R\n\026SetAttitudeRateReques"
-    "t\0228\n\rattitude_rate\030\001 \001(\0132!.mavsdk.rpc.of"
-    "fboard.AttitudeRate\"W\n\027SetAttitudeRateRe"
-    "sponse\022<\n\017offboard_result\030\001 \001(\0132#.mavsdk"
-    ".rpc.offboard.OffboardResult\"V\n\025SetPosit"
-    "ionNedRequest\022=\n\020position_ned_yaw\030\001 \001(\0132"
-    "#.mavsdk.rpc.offboard.PositionNedYaw\"V\n\026"
-    "SetPositionNedResponse\022<\n\017offboard_resul"
-    "t\030\001 \001(\0132#.mavsdk.rpc.offboard.OffboardRe"
-    "sult\"_\n\030SetPositionGlobalRequest\022C\n\023posi"
-    "tion_global_yaw\030\001 \001(\0132&.mavsdk.rpc.offbo"
-    "ard.PositionGlobalYaw\"Y\n\031SetPositionGlob"
-    "alResponse\022<\n\017offboard_result\030\001 \001(\0132#.ma"
-    "vsdk.rpc.offboard.OffboardResult\"c\n\026SetV"
-    "elocityBodyRequest\022I\n\026velocity_body_yaws"
-    "peed\030\001 \001(\0132).mavsdk.rpc.offboard.Velocit"
-    "yBodyYawspeed\"W\n\027SetVelocityBodyResponse"
-    "\022<\n\017offboard_result\030\001 \001(\0132#.mavsdk.rpc.o"
-    "ffboard.OffboardResult\"V\n\025SetVelocityNed"
-    "Request\022=\n\020velocity_ned_yaw\030\001 \001(\0132#.mavs"
-    "dk.rpc.offboard.VelocityNedYaw\"V\n\026SetVel"
-    "ocityNedResponse\022<\n\017offboard_result\030\001 \001("
-    "\0132#.mavsdk.rpc.offboard.OffboardResult\"\235"
-    "\001\n\035SetPositionVelocityNedRequest\022=\n\020posi"
-    "tion_ned_yaw\030\001 \001(\0132#.mavsdk.rpc.offboard"
-    ".PositionNedYaw\022=\n\020velocity_ned_yaw\030\002 \001("
-    "\0132#.mavsdk.rpc.offboard.VelocityNedYaw\"\351"
-    "\001\n)SetPositionVelocityAccelerationNedReq"
-    "uest\022=\n\020position_ned_yaw\030\001 \001(\0132#.mavsdk."
-    "rpc.offboard.PositionNedYaw\022=\n\020velocity_"
-    "ned_yaw\030\002 \001(\0132#.mavsdk.rpc.offboard.Velo"
-    "cityNedYaw\022>\n\020acceleration_ned\030\003 \001(\0132$.m"
-    "avsdk.rpc.offboard.AccelerationNed\"^\n\036Se"
-    "tPositionVelocityNedResponse\022<\n\017offboard"
-    "_result\030\001 \001(\0132#.mavsdk.rpc.offboard.Offb"
-    "oardResult\"j\n*SetPositionVelocityAcceler"
-    "ationNedResponse\022<\n\017offboard_result\030\001 \001("
-    "\0132#.mavsdk.rpc.offboard.OffboardResult\"["
-    "\n\031SetAccelerationNedRequest\022>\n\020accelerat"
-    "ion_ned\030\001 \001(\0132$.mavsdk.rpc.offboard.Acce"
-    "lerationNed\"Z\n\032SetAccelerationNedRespons"
-    "e\022<\n\017offboard_result\030\001 \001(\0132#.mavsdk.rpc."
-    "offboard.OffboardResult\"V\n\010Attitude\022\020\n\010r"
-    "oll_deg\030\001 \001(\002\022\021\n\tpitch_deg\030\002 \001(\002\022\017\n\007yaw_"
-    "deg\030\003 \001(\002\022\024\n\014thrust_value\030\004 \001(\002\"(\n\024Actua"
-    "torControlGroup\022\020\n\010controls\030\001 \003(\002\"L\n\017Act"
-    "uatorControl\0229\n\006groups\030\001 \003(\0132).mavsdk.rp"
-    "c.offboard.ActuatorControlGroup\"`\n\014Attit"
-    "udeRate\022\022\n\nroll_deg_s\030\001 \001(\002\022\023\n\013pitch_deg"
-    "_s\030\002 \001(\002\022\021\n\tyaw_deg_s\030\003 \001(\002\022\024\n\014thrust_va"
-    "lue\030\004 \001(\002\"R\n\016PositionNedYaw\022\017\n\007north_m\030\001"
-    " \001(\002\022\016\n\006east_m\030\002 \001(\002\022\016\n\006down_m\030\003 \001(\002\022\017\n\007"
-    "yaw_deg\030\004 \001(\002\"\374\001\n\021PositionGlobalYaw\022\017\n\007l"
-    "at_deg\030\001 \001(\001\022\017\n\007lon_deg\030\002 \001(\001\022\r\n\005alt_m\030\003"
-    " \001(\002\022\017\n\007yaw_deg\030\004 \001(\002\022J\n\raltitude_type\030\005"
-    " \001(\01623.mavsdk.rpc.offboard.PositionGloba"
-    "lYaw.AltitudeType\"Y\n\014AltitudeType\022\032\n\026ALT"
-    "ITUDE_TYPE_REL_HOME\020\000\022\026\n\022ALTITUDE_TYPE_A"
-    "MSL\020\001\022\025\n\021ALTITUDE_TYPE_AGL\020\002\"h\n\024Velocity"
-    "BodyYawspeed\022\023\n\013forward_m_s\030\001 \001(\002\022\021\n\trig"
-    "ht_m_s\030\002 \001(\002\022\020\n\010down_m_s\030\003 \001(\002\022\026\n\016yawspe"
-    "ed_deg_s\030\004 \001(\002\"X\n\016VelocityNedYaw\022\021\n\tnort"
-    "h_m_s\030\001 \001(\002\022\020\n\010east_m_s\030\002 \001(\002\022\020\n\010down_m_"
-    "s\030\003 \001(\002\022\017\n\007yaw_deg\030\004 \001(\002\"K\n\017Acceleration"
-    "Ned\022\022\n\nnorth_m_s2\030\001 \001(\002\022\021\n\teast_m_s2\030\002 \001"
-    "(\002\022\021\n\tdown_m_s2\030\003 \001(\002\"\265\002\n\016OffboardResult"
-    "\022:\n\006result\030\001 \001(\0162*.mavsdk.rpc.offboard.O"
-    "ffboardResult.Result\022\022\n\nresult_str\030\002 \001(\t"
-    "\"\322\001\n\006Result\022\022\n\016RESULT_UNKNOWN\020\000\022\022\n\016RESUL"
-    "T_SUCCESS\020\001\022\024\n\020RESULT_NO_SYSTEM\020\002\022\033\n\027RES"
-    "ULT_CONNECTION_ERROR\020\003\022\017\n\013RESULT_BUSY\020\004\022"
-    "\031\n\025RESULT_COMMAND_DENIED\020\005\022\022\n\016RESULT_TIM"
-    "EOUT\020\006\022\032\n\026RESULT_NO_SETPOINT_SET\020\007\022\021\n\rRE"
-    "SULT_FAILED\020\0102\357\013\n\017OffboardService\022P\n\005Sta"
-    "rt\022!.mavsdk.rpc.offboard.StartRequest\032\"."
-    "mavsdk.rpc.offboard.StartResponse\"\000\022M\n\004S"
-    "top\022 .mavsdk.rpc.offboard.StopRequest\032!."
-    "mavsdk.rpc.offboard.StopResponse\"\000\022]\n\010Is"
-    "Active\022$.mavsdk.rpc.offboard.IsActiveReq"
-    "uest\032%.mavsdk.rpc.offboard.IsActiveRespo"
-    "nse\"\004\200\265\030\001\022f\n\013SetAttitude\022\'.mavsdk.rpc.of"
-    "fboard.SetAttitudeRequest\032(.mavsdk.rpc.o"
-    "ffboard.SetAttitudeResponse\"\004\200\265\030\001\022{\n\022Set"
-    "ActuatorControl\022..mavsdk.rpc.offboard.Se"
-    "tActuatorControlRequest\032/.mavsdk.rpc.off"
-    "board.SetActuatorControlResponse\"\004\200\265\030\001\022r"
-    "\n\017SetAttitudeRate\022+.mavsdk.rpc.offboard."
-    "SetAttitudeRateRequest\032,.mavsdk.rpc.offb"
-    "oard.SetAttitudeRateResponse\"\004\200\265\030\001\022o\n\016Se"
-    "tPositionNed\022*.mavsdk.rpc.offboard.SetPo"
-    "sitionNedRequest\032+.mavsdk.rpc.offboard.S"
-    "etPositionNedResponse\"\004\200\265\030\001\022x\n\021SetPositi"
-    "onGlobal\022-.mavsdk.rpc.offboard.SetPositi"
-    "onGlobalRequest\032..mavsdk.rpc.offboard.Se"
-    "tPositionGlobalResponse\"\004\200\265\030\001\022r\n\017SetVelo"
-    "cityBody\022+.mavsdk.rpc.offboard.SetVeloci"
-    "tyBodyRequest\032,.mavsdk.rpc.offboard.SetV"
-    "elocityBodyResponse\"\004\200\265\030\001\022o\n\016SetVelocity"
-    "Ned\022*.mavsdk.rpc.offboard.SetVelocityNed"
-    "Request\032+.mavsdk.rpc.offboard.SetVelocit"
-    "yNedResponse\"\004\200\265\030\001\022\207\001\n\026SetPositionVeloci"
-    "tyNed\0222.mavsdk.rpc.offboard.SetPositionV"
-    "elocityNedRequest\0323.mavsdk.rpc.offboard."
-    "SetPositionVelocityNedResponse\"\004\200\265\030\001\022\253\001\n"
-    "\"SetPositionVelocityAccelerationNed\022>.ma"
-    "vsdk.rpc.offboard.SetPositionVelocityAcc"
-    "elerationNedRequest\032\?.mavsdk.rpc.offboar"
-    "d.SetPositionVelocityAccelerationNedResp"
-    "onse\"\004\200\265\030\001\022{\n\022SetAccelerationNed\022..mavsd"
-    "k.rpc.offboard.SetAccelerationNedRequest"
-    "\032/.mavsdk.rpc.offboard.SetAccelerationNe"
-    "dResponse\"\004\200\265\030\001B#\n\022io.mavsdk.offboardB\rO"
-    "ffboardProtob\006proto3"
+    "dk.rpc.offboard.OffboardResult\"d\n\034SetAtt"
+    "itudeQuaternionRequest\022D\n\023attitude_quate"
+    "rnion\030\001 \001(\0132\'.mavsdk.rpc.offboard.Attitu"
+    "deQuaternion\"]\n\035SetAttitudeQuaternionRes"
+    "ponse\022<\n\017offboard_result\030\001 \001(\0132#.mavsdk."
+    "rpc.offboard.OffboardResult\"[\n\031SetActuat"
+    "orControlRequest\022>\n\020actuator_control\030\001 \001"
+    "(\0132$.mavsdk.rpc.offboard.ActuatorControl"
+    "\"Z\n\032SetActuatorControlResponse\022<\n\017offboa"
+    "rd_result\030\001 \001(\0132#.mavsdk.rpc.offboard.Of"
+    "fboardResult\"R\n\026SetAttitudeRateRequest\0228"
+    "\n\rattitude_rate\030\001 \001(\0132!.mavsdk.rpc.offbo"
+    "ard.AttitudeRate\"W\n\027SetAttitudeRateRespo"
+    "nse\022<\n\017offboard_result\030\001 \001(\0132#.mavsdk.rp"
+    "c.offboard.OffboardResult\"V\n\025SetPosition"
+    "NedRequest\022=\n\020position_ned_yaw\030\001 \001(\0132#.m"
+    "avsdk.rpc.offboard.PositionNedYaw\"V\n\026Set"
+    "PositionNedResponse\022<\n\017offboard_result\030\001"
+    " \001(\0132#.mavsdk.rpc.offboard.OffboardResul"
+    "t\"_\n\030SetPositionGlobalRequest\022C\n\023positio"
+    "n_global_yaw\030\001 \001(\0132&.mavsdk.rpc.offboard"
+    ".PositionGlobalYaw\"Y\n\031SetPositionGlobalR"
+    "esponse\022<\n\017offboard_result\030\001 \001(\0132#.mavsd"
+    "k.rpc.offboard.OffboardResult\"c\n\026SetVelo"
+    "cityBodyRequest\022I\n\026velocity_body_yawspee"
+    "d\030\001 \001(\0132).mavsdk.rpc.offboard.VelocityBo"
+    "dyYawspeed\"W\n\027SetVelocityBodyResponse\022<\n"
+    "\017offboard_result\030\001 \001(\0132#.mavsdk.rpc.offb"
+    "oard.OffboardResult\"V\n\025SetVelocityNedReq"
+    "uest\022=\n\020velocity_ned_yaw\030\001 \001(\0132#.mavsdk."
+    "rpc.offboard.VelocityNedYaw\"V\n\026SetVeloci"
+    "tyNedResponse\022<\n\017offboard_result\030\001 \001(\0132#"
+    ".mavsdk.rpc.offboard.OffboardResult\"\235\001\n\035"
+    "SetPositionVelocityNedRequest\022=\n\020positio"
+    "n_ned_yaw\030\001 \001(\0132#.mavsdk.rpc.offboard.Po"
+    "sitionNedYaw\022=\n\020velocity_ned_yaw\030\002 \001(\0132#"
+    ".mavsdk.rpc.offboard.VelocityNedYaw\"\351\001\n)"
+    "SetPositionVelocityAccelerationNedReques"
+    "t\022=\n\020position_ned_yaw\030\001 \001(\0132#.mavsdk.rpc"
+    ".offboard.PositionNedYaw\022=\n\020velocity_ned"
+    "_yaw\030\002 \001(\0132#.mavsdk.rpc.offboard.Velocit"
+    "yNedYaw\022>\n\020acceleration_ned\030\003 \001(\0132$.mavs"
+    "dk.rpc.offboard.AccelerationNed\"^\n\036SetPo"
+    "sitionVelocityNedResponse\022<\n\017offboard_re"
+    "sult\030\001 \001(\0132#.mavsdk.rpc.offboard.Offboar"
+    "dResult\"j\n*SetPositionVelocityAccelerati"
+    "onNedResponse\022<\n\017offboard_result\030\001 \001(\0132#"
+    ".mavsdk.rpc.offboard.OffboardResult\"[\n\031S"
+    "etAccelerationNedRequest\022>\n\020acceleration"
+    "_ned\030\001 \001(\0132$.mavsdk.rpc.offboard.Acceler"
+    "ationNed\"Z\n\032SetAccelerationNedResponse\022<"
+    "\n\017offboard_result\030\001 \001(\0132#.mavsdk.rpc.off"
+    "board.OffboardResult\"V\n\010Attitude\022\020\n\010roll"
+    "_deg\030\001 \001(\002\022\021\n\tpitch_deg\030\002 \001(\002\022\017\n\007yaw_deg"
+    "\030\003 \001(\002\022\024\n\014thrust_value\030\004 \001(\002\"V\n\022Attitude"
+    "Quaternion\022\t\n\001w\030\001 \001(\002\022\t\n\001x\030\002 \001(\002\022\t\n\001y\030\003 "
+    "\001(\002\022\t\n\001z\030\004 \001(\002\022\024\n\014thrust_value\030\005 \001(\002\"(\n\024"
+    "ActuatorControlGroup\022\020\n\010controls\030\001 \003(\002\"L"
+    "\n\017ActuatorControl\0229\n\006groups\030\001 \003(\0132).mavs"
+    "dk.rpc.offboard.ActuatorControlGroup\"`\n\014"
+    "AttitudeRate\022\022\n\nroll_deg_s\030\001 \001(\002\022\023\n\013pitc"
+    "h_deg_s\030\002 \001(\002\022\021\n\tyaw_deg_s\030\003 \001(\002\022\024\n\014thru"
+    "st_value\030\004 \001(\002\"R\n\016PositionNedYaw\022\017\n\007nort"
+    "h_m\030\001 \001(\002\022\016\n\006east_m\030\002 \001(\002\022\016\n\006down_m\030\003 \001("
+    "\002\022\017\n\007yaw_deg\030\004 \001(\002\"\374\001\n\021PositionGlobalYaw"
+    "\022\017\n\007lat_deg\030\001 \001(\001\022\017\n\007lon_deg\030\002 \001(\001\022\r\n\005al"
+    "t_m\030\003 \001(\002\022\017\n\007yaw_deg\030\004 \001(\002\022J\n\raltitude_t"
+    "ype\030\005 \001(\01623.mavsdk.rpc.offboard.Position"
+    "GlobalYaw.AltitudeType\"Y\n\014AltitudeType\022\032"
+    "\n\026ALTITUDE_TYPE_REL_HOME\020\000\022\026\n\022ALTITUDE_T"
+    "YPE_AMSL\020\001\022\025\n\021ALTITUDE_TYPE_AGL\020\002\"h\n\024Vel"
+    "ocityBodyYawspeed\022\023\n\013forward_m_s\030\001 \001(\002\022\021"
+    "\n\tright_m_s\030\002 \001(\002\022\020\n\010down_m_s\030\003 \001(\002\022\026\n\016y"
+    "awspeed_deg_s\030\004 \001(\002\"X\n\016VelocityNedYaw\022\021\n"
+    "\tnorth_m_s\030\001 \001(\002\022\020\n\010east_m_s\030\002 \001(\002\022\020\n\010do"
+    "wn_m_s\030\003 \001(\002\022\017\n\007yaw_deg\030\004 \001(\002\"K\n\017Acceler"
+    "ationNed\022\022\n\nnorth_m_s2\030\001 \001(\002\022\021\n\teast_m_s"
+    "2\030\002 \001(\002\022\021\n\tdown_m_s2\030\003 \001(\002\"\265\002\n\016OffboardR"
+    "esult\022:\n\006result\030\001 \001(\0162*.mavsdk.rpc.offbo"
+    "ard.OffboardResult.Result\022\022\n\nresult_str\030"
+    "\002 \001(\t\"\322\001\n\006Result\022\022\n\016RESULT_UNKNOWN\020\000\022\022\n\016"
+    "RESULT_SUCCESS\020\001\022\024\n\020RESULT_NO_SYSTEM\020\002\022\033"
+    "\n\027RESULT_CONNECTION_ERROR\020\003\022\017\n\013RESULT_BU"
+    "SY\020\004\022\031\n\025RESULT_COMMAND_DENIED\020\005\022\022\n\016RESUL"
+    "T_TIMEOUT\020\006\022\032\n\026RESULT_NO_SETPOINT_SET\020\007\022"
+    "\021\n\rRESULT_FAILED\020\0102\366\014\n\017OffboardService\022P"
+    "\n\005Start\022!.mavsdk.rpc.offboard.StartReque"
+    "st\032\".mavsdk.rpc.offboard.StartResponse\"\000"
+    "\022M\n\004Stop\022 .mavsdk.rpc.offboard.StopReque"
+    "st\032!.mavsdk.rpc.offboard.StopResponse\"\000\022"
+    "]\n\010IsActive\022$.mavsdk.rpc.offboard.IsActi"
+    "veRequest\032%.mavsdk.rpc.offboard.IsActive"
+    "Response\"\004\200\265\030\001\022f\n\013SetAttitude\022\'.mavsdk.r"
+    "pc.offboard.SetAttitudeRequest\032(.mavsdk."
+    "rpc.offboard.SetAttitudeResponse\"\004\200\265\030\001\022\204"
+    "\001\n\025SetAttitudeQuaternion\0221.mavsdk.rpc.of"
+    "fboard.SetAttitudeQuaternionRequest\0322.ma"
+    "vsdk.rpc.offboard.SetAttitudeQuaternionR"
+    "esponse\"\004\200\265\030\001\022{\n\022SetActuatorControl\022..ma"
+    "vsdk.rpc.offboard.SetActuatorControlRequ"
+    "est\032/.mavsdk.rpc.offboard.SetActuatorCon"
+    "trolResponse\"\004\200\265\030\001\022r\n\017SetAttitudeRate\022+."
+    "mavsdk.rpc.offboard.SetAttitudeRateReque"
+    "st\032,.mavsdk.rpc.offboard.SetAttitudeRate"
+    "Response\"\004\200\265\030\001\022o\n\016SetPositionNed\022*.mavsd"
+    "k.rpc.offboard.SetPositionNedRequest\032+.m"
+    "avsdk.rpc.offboard.SetPositionNedRespons"
+    "e\"\004\200\265\030\001\022x\n\021SetPositionGlobal\022-.mavsdk.rp"
+    "c.offboard.SetPositionGlobalRequest\032..ma"
+    "vsdk.rpc.offboard.SetPositionGlobalRespo"
+    "nse\"\004\200\265\030\001\022r\n\017SetVelocityBody\022+.mavsdk.rp"
+    "c.offboard.SetVelocityBodyRequest\032,.mavs"
+    "dk.rpc.offboard.SetVelocityBodyResponse\""
+    "\004\200\265\030\001\022o\n\016SetVelocityNed\022*.mavsdk.rpc.off"
+    "board.SetVelocityNedRequest\032+.mavsdk.rpc"
+    ".offboard.SetVelocityNedResponse\"\004\200\265\030\001\022\207"
+    "\001\n\026SetPositionVelocityNed\0222.mavsdk.rpc.o"
+    "ffboard.SetPositionVelocityNedRequest\0323."
+    "mavsdk.rpc.offboard.SetPositionVelocityN"
+    "edResponse\"\004\200\265\030\001\022\253\001\n\"SetPositionVelocity"
+    "AccelerationNed\022>.mavsdk.rpc.offboard.Se"
+    "tPositionVelocityAccelerationNedRequest\032"
+    "\?.mavsdk.rpc.offboard.SetPositionVelocit"
+    "yAccelerationNedResponse\"\004\200\265\030\001\022{\n\022SetAcc"
+    "elerationNed\022..mavsdk.rpc.offboard.SetAc"
+    "celerationNedRequest\032/.mavsdk.rpc.offboa"
+    "rd.SetAccelerationNedResponse\"\004\200\265\030\001B#\n\022i"
+    "o.mavsdk.offboardB\rOffboardProtob\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_offboard_2foffboard_2eproto_deps[1] =
     {
@@ -1532,13 +1660,13 @@ static ::absl::once_flag descriptor_table_offboard_2foffboard_2eproto_once;
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_offboard_2foffboard_2eproto = {
     false,
     false,
-    5140,
+    5560,
     descriptor_table_protodef_offboard_2foffboard_2eproto,
     "offboard/offboard.proto",
     &descriptor_table_offboard_2foffboard_2eproto_once,
     descriptor_table_offboard_2foffboard_2eproto_deps,
     1,
-    36,
+    39,
     schemas,
     file_default_instances,
     TableStruct_offboard_2foffboard_2eproto::offsets,
@@ -3109,6 +3237,506 @@ void SetAttitudeResponse::InternalSwap(SetAttitudeResponse* PROTOBUF_RESTRICT ot
 }
 
 ::google::protobuf::Metadata SetAttitudeResponse::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class SetAttitudeQuaternionRequest::_Internal {
+ public:
+  using HasBits =
+      decltype(std::declval<SetAttitudeQuaternionRequest>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+      8 * PROTOBUF_FIELD_OFFSET(SetAttitudeQuaternionRequest, _impl_._has_bits_);
+};
+
+SetAttitudeQuaternionRequest::SetAttitudeQuaternionRequest(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:mavsdk.rpc.offboard.SetAttitudeQuaternionRequest)
+}
+inline PROTOBUF_NDEBUG_INLINE SetAttitudeQuaternionRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from, const ::mavsdk::rpc::offboard::SetAttitudeQuaternionRequest& from_msg)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0} {}
+
+SetAttitudeQuaternionRequest::SetAttitudeQuaternionRequest(
+    ::google::protobuf::Arena* arena,
+    const SetAttitudeQuaternionRequest& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SetAttitudeQuaternionRequest* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.attitude_quaternion_ = (cached_has_bits & 0x00000001u) ? ::google::protobuf::Message::CopyConstruct<::mavsdk::rpc::offboard::AttitudeQuaternion>(
+                              arena, *from._impl_.attitude_quaternion_)
+                        : nullptr;
+
+  // @@protoc_insertion_point(copy_constructor:mavsdk.rpc.offboard.SetAttitudeQuaternionRequest)
+}
+inline PROTOBUF_NDEBUG_INLINE SetAttitudeQuaternionRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0} {}
+
+inline void SetAttitudeQuaternionRequest::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.attitude_quaternion_ = {};
+}
+SetAttitudeQuaternionRequest::~SetAttitudeQuaternionRequest() {
+  // @@protoc_insertion_point(destructor:mavsdk.rpc.offboard.SetAttitudeQuaternionRequest)
+  SharedDtor(*this);
+}
+inline void SetAttitudeQuaternionRequest::SharedDtor(MessageLite& self) {
+  SetAttitudeQuaternionRequest& this_ = static_cast<SetAttitudeQuaternionRequest&>(self);
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  delete this_._impl_.attitude_quaternion_;
+  this_._impl_.~Impl_();
+}
+
+inline void* SetAttitudeQuaternionRequest::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) SetAttitudeQuaternionRequest(arena);
+}
+constexpr auto SetAttitudeQuaternionRequest::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::ZeroInit(sizeof(SetAttitudeQuaternionRequest),
+                                            alignof(SetAttitudeQuaternionRequest));
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull SetAttitudeQuaternionRequest::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_SetAttitudeQuaternionRequest_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &SetAttitudeQuaternionRequest::MergeImpl,
+        ::google::protobuf::Message::GetNewImpl<SetAttitudeQuaternionRequest>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &SetAttitudeQuaternionRequest::SharedDtor,
+        ::google::protobuf::Message::GetClearImpl<SetAttitudeQuaternionRequest>(), &SetAttitudeQuaternionRequest::ByteSizeLong,
+            &SetAttitudeQuaternionRequest::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(SetAttitudeQuaternionRequest, _impl_._cached_size_),
+        false,
+    },
+    &SetAttitudeQuaternionRequest::kDescriptorMethods,
+    &descriptor_table_offboard_2foffboard_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* SetAttitudeQuaternionRequest::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<0, 1, 1, 0, 2> SetAttitudeQuaternionRequest::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(SetAttitudeQuaternionRequest, _impl_._has_bits_),
+    0, // no _extensions_
+    1, 0,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967294,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    1,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::mavsdk::rpc::offboard::SetAttitudeQuaternionRequest>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // .mavsdk.rpc.offboard.AttitudeQuaternion attitude_quaternion = 1;
+    {::_pbi::TcParser::FastMtS1,
+     {10, 0, 0, PROTOBUF_FIELD_OFFSET(SetAttitudeQuaternionRequest, _impl_.attitude_quaternion_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // .mavsdk.rpc.offboard.AttitudeQuaternion attitude_quaternion = 1;
+    {PROTOBUF_FIELD_OFFSET(SetAttitudeQuaternionRequest, _impl_.attitude_quaternion_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::mavsdk::rpc::offboard::AttitudeQuaternion>()},
+  }}, {{
+  }},
+};
+
+PROTOBUF_NOINLINE void SetAttitudeQuaternionRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:mavsdk.rpc.offboard.SetAttitudeQuaternionRequest)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(_impl_.attitude_quaternion_ != nullptr);
+    _impl_.attitude_quaternion_->Clear();
+  }
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::uint8_t* SetAttitudeQuaternionRequest::_InternalSerialize(
+            const MessageLite& base, ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) {
+          const SetAttitudeQuaternionRequest& this_ = static_cast<const SetAttitudeQuaternionRequest&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::uint8_t* SetAttitudeQuaternionRequest::_InternalSerialize(
+            ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+          const SetAttitudeQuaternionRequest& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(serialize_to_array_start:mavsdk.rpc.offboard.SetAttitudeQuaternionRequest)
+          ::uint32_t cached_has_bits = 0;
+          (void)cached_has_bits;
+
+          cached_has_bits = this_._impl_._has_bits_[0];
+          // .mavsdk.rpc.offboard.AttitudeQuaternion attitude_quaternion = 1;
+          if (cached_has_bits & 0x00000001u) {
+            target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+                1, *this_._impl_.attitude_quaternion_, this_._impl_.attitude_quaternion_->GetCachedSize(), target,
+                stream);
+          }
+
+          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+            target =
+                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+          }
+          // @@protoc_insertion_point(serialize_to_array_end:mavsdk.rpc.offboard.SetAttitudeQuaternionRequest)
+          return target;
+        }
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::size_t SetAttitudeQuaternionRequest::ByteSizeLong(const MessageLite& base) {
+          const SetAttitudeQuaternionRequest& this_ = static_cast<const SetAttitudeQuaternionRequest&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::size_t SetAttitudeQuaternionRequest::ByteSizeLong() const {
+          const SetAttitudeQuaternionRequest& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(message_byte_size_start:mavsdk.rpc.offboard.SetAttitudeQuaternionRequest)
+          ::size_t total_size = 0;
+
+          ::uint32_t cached_has_bits = 0;
+          // Prevent compiler warnings about cached_has_bits being unused
+          (void)cached_has_bits;
+
+           {
+            // .mavsdk.rpc.offboard.AttitudeQuaternion attitude_quaternion = 1;
+            cached_has_bits = this_._impl_._has_bits_[0];
+            if (cached_has_bits & 0x00000001u) {
+              total_size += 1 +
+                            ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.attitude_quaternion_);
+            }
+          }
+          return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                                     &this_._impl_._cached_size_);
+        }
+
+void SetAttitudeQuaternionRequest::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<SetAttitudeQuaternionRequest*>(&to_msg);
+  auto& from = static_cast<const SetAttitudeQuaternionRequest&>(from_msg);
+  ::google::protobuf::Arena* arena = _this->GetArena();
+  // @@protoc_insertion_point(class_specific_merge_from_start:mavsdk.rpc.offboard.SetAttitudeQuaternionRequest)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(from._impl_.attitude_quaternion_ != nullptr);
+    if (_this->_impl_.attitude_quaternion_ == nullptr) {
+      _this->_impl_.attitude_quaternion_ =
+          ::google::protobuf::Message::CopyConstruct<::mavsdk::rpc::offboard::AttitudeQuaternion>(arena, *from._impl_.attitude_quaternion_);
+    } else {
+      _this->_impl_.attitude_quaternion_->MergeFrom(*from._impl_.attitude_quaternion_);
+    }
+  }
+  _this->_impl_._has_bits_[0] |= cached_has_bits;
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void SetAttitudeQuaternionRequest::CopyFrom(const SetAttitudeQuaternionRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:mavsdk.rpc.offboard.SetAttitudeQuaternionRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void SetAttitudeQuaternionRequest::InternalSwap(SetAttitudeQuaternionRequest* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  swap(_impl_.attitude_quaternion_, other->_impl_.attitude_quaternion_);
+}
+
+::google::protobuf::Metadata SetAttitudeQuaternionRequest::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class SetAttitudeQuaternionResponse::_Internal {
+ public:
+  using HasBits =
+      decltype(std::declval<SetAttitudeQuaternionResponse>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+      8 * PROTOBUF_FIELD_OFFSET(SetAttitudeQuaternionResponse, _impl_._has_bits_);
+};
+
+SetAttitudeQuaternionResponse::SetAttitudeQuaternionResponse(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:mavsdk.rpc.offboard.SetAttitudeQuaternionResponse)
+}
+inline PROTOBUF_NDEBUG_INLINE SetAttitudeQuaternionResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from, const ::mavsdk::rpc::offboard::SetAttitudeQuaternionResponse& from_msg)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0} {}
+
+SetAttitudeQuaternionResponse::SetAttitudeQuaternionResponse(
+    ::google::protobuf::Arena* arena,
+    const SetAttitudeQuaternionResponse& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SetAttitudeQuaternionResponse* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.offboard_result_ = (cached_has_bits & 0x00000001u) ? ::google::protobuf::Message::CopyConstruct<::mavsdk::rpc::offboard::OffboardResult>(
+                              arena, *from._impl_.offboard_result_)
+                        : nullptr;
+
+  // @@protoc_insertion_point(copy_constructor:mavsdk.rpc.offboard.SetAttitudeQuaternionResponse)
+}
+inline PROTOBUF_NDEBUG_INLINE SetAttitudeQuaternionResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0} {}
+
+inline void SetAttitudeQuaternionResponse::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.offboard_result_ = {};
+}
+SetAttitudeQuaternionResponse::~SetAttitudeQuaternionResponse() {
+  // @@protoc_insertion_point(destructor:mavsdk.rpc.offboard.SetAttitudeQuaternionResponse)
+  SharedDtor(*this);
+}
+inline void SetAttitudeQuaternionResponse::SharedDtor(MessageLite& self) {
+  SetAttitudeQuaternionResponse& this_ = static_cast<SetAttitudeQuaternionResponse&>(self);
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  delete this_._impl_.offboard_result_;
+  this_._impl_.~Impl_();
+}
+
+inline void* SetAttitudeQuaternionResponse::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) SetAttitudeQuaternionResponse(arena);
+}
+constexpr auto SetAttitudeQuaternionResponse::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::ZeroInit(sizeof(SetAttitudeQuaternionResponse),
+                                            alignof(SetAttitudeQuaternionResponse));
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull SetAttitudeQuaternionResponse::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_SetAttitudeQuaternionResponse_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &SetAttitudeQuaternionResponse::MergeImpl,
+        ::google::protobuf::Message::GetNewImpl<SetAttitudeQuaternionResponse>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &SetAttitudeQuaternionResponse::SharedDtor,
+        ::google::protobuf::Message::GetClearImpl<SetAttitudeQuaternionResponse>(), &SetAttitudeQuaternionResponse::ByteSizeLong,
+            &SetAttitudeQuaternionResponse::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(SetAttitudeQuaternionResponse, _impl_._cached_size_),
+        false,
+    },
+    &SetAttitudeQuaternionResponse::kDescriptorMethods,
+    &descriptor_table_offboard_2foffboard_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* SetAttitudeQuaternionResponse::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<0, 1, 1, 0, 2> SetAttitudeQuaternionResponse::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(SetAttitudeQuaternionResponse, _impl_._has_bits_),
+    0, // no _extensions_
+    1, 0,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967294,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    1,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::mavsdk::rpc::offboard::SetAttitudeQuaternionResponse>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // .mavsdk.rpc.offboard.OffboardResult offboard_result = 1;
+    {::_pbi::TcParser::FastMtS1,
+     {10, 0, 0, PROTOBUF_FIELD_OFFSET(SetAttitudeQuaternionResponse, _impl_.offboard_result_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // .mavsdk.rpc.offboard.OffboardResult offboard_result = 1;
+    {PROTOBUF_FIELD_OFFSET(SetAttitudeQuaternionResponse, _impl_.offboard_result_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::mavsdk::rpc::offboard::OffboardResult>()},
+  }}, {{
+  }},
+};
+
+PROTOBUF_NOINLINE void SetAttitudeQuaternionResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:mavsdk.rpc.offboard.SetAttitudeQuaternionResponse)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(_impl_.offboard_result_ != nullptr);
+    _impl_.offboard_result_->Clear();
+  }
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::uint8_t* SetAttitudeQuaternionResponse::_InternalSerialize(
+            const MessageLite& base, ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) {
+          const SetAttitudeQuaternionResponse& this_ = static_cast<const SetAttitudeQuaternionResponse&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::uint8_t* SetAttitudeQuaternionResponse::_InternalSerialize(
+            ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+          const SetAttitudeQuaternionResponse& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(serialize_to_array_start:mavsdk.rpc.offboard.SetAttitudeQuaternionResponse)
+          ::uint32_t cached_has_bits = 0;
+          (void)cached_has_bits;
+
+          cached_has_bits = this_._impl_._has_bits_[0];
+          // .mavsdk.rpc.offboard.OffboardResult offboard_result = 1;
+          if (cached_has_bits & 0x00000001u) {
+            target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+                1, *this_._impl_.offboard_result_, this_._impl_.offboard_result_->GetCachedSize(), target,
+                stream);
+          }
+
+          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+            target =
+                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+          }
+          // @@protoc_insertion_point(serialize_to_array_end:mavsdk.rpc.offboard.SetAttitudeQuaternionResponse)
+          return target;
+        }
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::size_t SetAttitudeQuaternionResponse::ByteSizeLong(const MessageLite& base) {
+          const SetAttitudeQuaternionResponse& this_ = static_cast<const SetAttitudeQuaternionResponse&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::size_t SetAttitudeQuaternionResponse::ByteSizeLong() const {
+          const SetAttitudeQuaternionResponse& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(message_byte_size_start:mavsdk.rpc.offboard.SetAttitudeQuaternionResponse)
+          ::size_t total_size = 0;
+
+          ::uint32_t cached_has_bits = 0;
+          // Prevent compiler warnings about cached_has_bits being unused
+          (void)cached_has_bits;
+
+           {
+            // .mavsdk.rpc.offboard.OffboardResult offboard_result = 1;
+            cached_has_bits = this_._impl_._has_bits_[0];
+            if (cached_has_bits & 0x00000001u) {
+              total_size += 1 +
+                            ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.offboard_result_);
+            }
+          }
+          return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                                     &this_._impl_._cached_size_);
+        }
+
+void SetAttitudeQuaternionResponse::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<SetAttitudeQuaternionResponse*>(&to_msg);
+  auto& from = static_cast<const SetAttitudeQuaternionResponse&>(from_msg);
+  ::google::protobuf::Arena* arena = _this->GetArena();
+  // @@protoc_insertion_point(class_specific_merge_from_start:mavsdk.rpc.offboard.SetAttitudeQuaternionResponse)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(from._impl_.offboard_result_ != nullptr);
+    if (_this->_impl_.offboard_result_ == nullptr) {
+      _this->_impl_.offboard_result_ =
+          ::google::protobuf::Message::CopyConstruct<::mavsdk::rpc::offboard::OffboardResult>(arena, *from._impl_.offboard_result_);
+    } else {
+      _this->_impl_.offboard_result_->MergeFrom(*from._impl_.offboard_result_);
+    }
+  }
+  _this->_impl_._has_bits_[0] |= cached_has_bits;
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void SetAttitudeQuaternionResponse::CopyFrom(const SetAttitudeQuaternionResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:mavsdk.rpc.offboard.SetAttitudeQuaternionResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void SetAttitudeQuaternionResponse::InternalSwap(SetAttitudeQuaternionResponse* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  swap(_impl_.offboard_result_, other->_impl_.offboard_result_);
+}
+
+::google::protobuf::Metadata SetAttitudeQuaternionResponse::GetMetadata() const {
   return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
 }
 // ===================================================================
@@ -8027,6 +8655,308 @@ void Attitude::InternalSwap(Attitude* PROTOBUF_RESTRICT other) {
 }
 
 ::google::protobuf::Metadata Attitude::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class AttitudeQuaternion::_Internal {
+ public:
+};
+
+AttitudeQuaternion::AttitudeQuaternion(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:mavsdk.rpc.offboard.AttitudeQuaternion)
+}
+AttitudeQuaternion::AttitudeQuaternion(
+    ::google::protobuf::Arena* arena, const AttitudeQuaternion& from)
+    : AttitudeQuaternion(arena) {
+  MergeFrom(from);
+}
+inline PROTOBUF_NDEBUG_INLINE AttitudeQuaternion::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0} {}
+
+inline void AttitudeQuaternion::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, w_),
+           0,
+           offsetof(Impl_, thrust_value_) -
+               offsetof(Impl_, w_) +
+               sizeof(Impl_::thrust_value_));
+}
+AttitudeQuaternion::~AttitudeQuaternion() {
+  // @@protoc_insertion_point(destructor:mavsdk.rpc.offboard.AttitudeQuaternion)
+  SharedDtor(*this);
+}
+inline void AttitudeQuaternion::SharedDtor(MessageLite& self) {
+  AttitudeQuaternion& this_ = static_cast<AttitudeQuaternion&>(self);
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.~Impl_();
+}
+
+inline void* AttitudeQuaternion::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) AttitudeQuaternion(arena);
+}
+constexpr auto AttitudeQuaternion::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::ZeroInit(sizeof(AttitudeQuaternion),
+                                            alignof(AttitudeQuaternion));
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull AttitudeQuaternion::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_AttitudeQuaternion_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &AttitudeQuaternion::MergeImpl,
+        ::google::protobuf::Message::GetNewImpl<AttitudeQuaternion>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &AttitudeQuaternion::SharedDtor,
+        ::google::protobuf::Message::GetClearImpl<AttitudeQuaternion>(), &AttitudeQuaternion::ByteSizeLong,
+            &AttitudeQuaternion::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(AttitudeQuaternion, _impl_._cached_size_),
+        false,
+    },
+    &AttitudeQuaternion::kDescriptorMethods,
+    &descriptor_table_offboard_2foffboard_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* AttitudeQuaternion::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<3, 5, 0, 0, 2> AttitudeQuaternion::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    5, 56,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967264,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    5,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::mavsdk::rpc::offboard::AttitudeQuaternion>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    {::_pbi::TcParser::MiniParse, {}},
+    // float w = 1;
+    {::_pbi::TcParser::FastF32S1,
+     {13, 63, 0, PROTOBUF_FIELD_OFFSET(AttitudeQuaternion, _impl_.w_)}},
+    // float x = 2;
+    {::_pbi::TcParser::FastF32S1,
+     {21, 63, 0, PROTOBUF_FIELD_OFFSET(AttitudeQuaternion, _impl_.x_)}},
+    // float y = 3;
+    {::_pbi::TcParser::FastF32S1,
+     {29, 63, 0, PROTOBUF_FIELD_OFFSET(AttitudeQuaternion, _impl_.y_)}},
+    // float z = 4;
+    {::_pbi::TcParser::FastF32S1,
+     {37, 63, 0, PROTOBUF_FIELD_OFFSET(AttitudeQuaternion, _impl_.z_)}},
+    // float thrust_value = 5;
+    {::_pbi::TcParser::FastF32S1,
+     {45, 63, 0, PROTOBUF_FIELD_OFFSET(AttitudeQuaternion, _impl_.thrust_value_)}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // float w = 1;
+    {PROTOBUF_FIELD_OFFSET(AttitudeQuaternion, _impl_.w_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kFloat)},
+    // float x = 2;
+    {PROTOBUF_FIELD_OFFSET(AttitudeQuaternion, _impl_.x_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kFloat)},
+    // float y = 3;
+    {PROTOBUF_FIELD_OFFSET(AttitudeQuaternion, _impl_.y_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kFloat)},
+    // float z = 4;
+    {PROTOBUF_FIELD_OFFSET(AttitudeQuaternion, _impl_.z_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kFloat)},
+    // float thrust_value = 5;
+    {PROTOBUF_FIELD_OFFSET(AttitudeQuaternion, _impl_.thrust_value_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kFloat)},
+  }},
+  // no aux_entries
+  {{
+  }},
+};
+
+PROTOBUF_NOINLINE void AttitudeQuaternion::Clear() {
+// @@protoc_insertion_point(message_clear_start:mavsdk.rpc.offboard.AttitudeQuaternion)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  ::memset(&_impl_.w_, 0, static_cast<::size_t>(
+      reinterpret_cast<char*>(&_impl_.thrust_value_) -
+      reinterpret_cast<char*>(&_impl_.w_)) + sizeof(_impl_.thrust_value_));
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::uint8_t* AttitudeQuaternion::_InternalSerialize(
+            const MessageLite& base, ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) {
+          const AttitudeQuaternion& this_ = static_cast<const AttitudeQuaternion&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::uint8_t* AttitudeQuaternion::_InternalSerialize(
+            ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+          const AttitudeQuaternion& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(serialize_to_array_start:mavsdk.rpc.offboard.AttitudeQuaternion)
+          ::uint32_t cached_has_bits = 0;
+          (void)cached_has_bits;
+
+          // float w = 1;
+          if (::absl::bit_cast<::uint32_t>(this_._internal_w()) != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteFloatToArray(
+                1, this_._internal_w(), target);
+          }
+
+          // float x = 2;
+          if (::absl::bit_cast<::uint32_t>(this_._internal_x()) != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteFloatToArray(
+                2, this_._internal_x(), target);
+          }
+
+          // float y = 3;
+          if (::absl::bit_cast<::uint32_t>(this_._internal_y()) != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteFloatToArray(
+                3, this_._internal_y(), target);
+          }
+
+          // float z = 4;
+          if (::absl::bit_cast<::uint32_t>(this_._internal_z()) != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteFloatToArray(
+                4, this_._internal_z(), target);
+          }
+
+          // float thrust_value = 5;
+          if (::absl::bit_cast<::uint32_t>(this_._internal_thrust_value()) != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteFloatToArray(
+                5, this_._internal_thrust_value(), target);
+          }
+
+          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+            target =
+                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+          }
+          // @@protoc_insertion_point(serialize_to_array_end:mavsdk.rpc.offboard.AttitudeQuaternion)
+          return target;
+        }
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::size_t AttitudeQuaternion::ByteSizeLong(const MessageLite& base) {
+          const AttitudeQuaternion& this_ = static_cast<const AttitudeQuaternion&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::size_t AttitudeQuaternion::ByteSizeLong() const {
+          const AttitudeQuaternion& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(message_byte_size_start:mavsdk.rpc.offboard.AttitudeQuaternion)
+          ::size_t total_size = 0;
+
+          ::uint32_t cached_has_bits = 0;
+          // Prevent compiler warnings about cached_has_bits being unused
+          (void)cached_has_bits;
+
+          ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+           {
+            // float w = 1;
+            if (::absl::bit_cast<::uint32_t>(this_._internal_w()) != 0) {
+              total_size += 5;
+            }
+            // float x = 2;
+            if (::absl::bit_cast<::uint32_t>(this_._internal_x()) != 0) {
+              total_size += 5;
+            }
+            // float y = 3;
+            if (::absl::bit_cast<::uint32_t>(this_._internal_y()) != 0) {
+              total_size += 5;
+            }
+            // float z = 4;
+            if (::absl::bit_cast<::uint32_t>(this_._internal_z()) != 0) {
+              total_size += 5;
+            }
+            // float thrust_value = 5;
+            if (::absl::bit_cast<::uint32_t>(this_._internal_thrust_value()) != 0) {
+              total_size += 5;
+            }
+          }
+          return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                                     &this_._impl_._cached_size_);
+        }
+
+void AttitudeQuaternion::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<AttitudeQuaternion*>(&to_msg);
+  auto& from = static_cast<const AttitudeQuaternion&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:mavsdk.rpc.offboard.AttitudeQuaternion)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (::absl::bit_cast<::uint32_t>(from._internal_w()) != 0) {
+    _this->_impl_.w_ = from._impl_.w_;
+  }
+  if (::absl::bit_cast<::uint32_t>(from._internal_x()) != 0) {
+    _this->_impl_.x_ = from._impl_.x_;
+  }
+  if (::absl::bit_cast<::uint32_t>(from._internal_y()) != 0) {
+    _this->_impl_.y_ = from._impl_.y_;
+  }
+  if (::absl::bit_cast<::uint32_t>(from._internal_z()) != 0) {
+    _this->_impl_.z_ = from._impl_.z_;
+  }
+  if (::absl::bit_cast<::uint32_t>(from._internal_thrust_value()) != 0) {
+    _this->_impl_.thrust_value_ = from._impl_.thrust_value_;
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void AttitudeQuaternion::CopyFrom(const AttitudeQuaternion& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:mavsdk.rpc.offboard.AttitudeQuaternion)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void AttitudeQuaternion::InternalSwap(AttitudeQuaternion* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::google::protobuf::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(AttitudeQuaternion, _impl_.thrust_value_)
+      + sizeof(AttitudeQuaternion::_impl_.thrust_value_)
+      - PROTOBUF_FIELD_OFFSET(AttitudeQuaternion, _impl_.w_)>(
+          reinterpret_cast<char*>(&_impl_.w_),
+          reinterpret_cast<char*>(&other->_impl_.w_));
+}
+
+::google::protobuf::Metadata AttitudeQuaternion::GetMetadata() const {
   return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
 }
 // ===================================================================

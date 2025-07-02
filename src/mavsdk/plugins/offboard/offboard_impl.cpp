@@ -328,6 +328,31 @@ Offboard::Result OffboardImpl::set_attitude(Offboard::Attitude attitude)
     return send_attitude();
 }
 
+Offboard::Result OffboardImpl::set_attitude(Offboard::AttitudeQuaternion attitude_quaternion)
+{
+    {
+        std::lock_guard<std::mutex> lock(_mutex);
+        _attitude_quaternion = attitude_quaternion;
+
+        if (_mode != Mode::AttitudeQuaternion) {
+            // If we're already sending other setpoints, stop that now.
+            _system_impl->remove_call_every(_call_every_cookie);
+            // We automatically send quaternion attitude setpoints from now on.
+            _call_every_cookie =
+                _system_impl->add_call_every([this]() { send_attitude_quaternion(); }, SEND_INTERVAL_S);
+
+            _mode = Mode::AttitudeQuaternion;
+        } else {
+            // We're already sending these kind of setpoints. Since the setpoint change, let's
+            // reschedule the next call, so we don't send setpoints too often.
+            _system_impl->reset_call_every(_call_every_cookie);
+        }
+    }
+
+    // also send it right now to reduce latency
+    return send_attitude_quaternion();
+}
+
 Offboard::Result OffboardImpl::set_attitude_rate(Offboard::AttitudeRate attitude_rate)
 {
     {
@@ -737,6 +762,41 @@ Offboard::Result OffboardImpl::send_attitude()
             0,
             0,
             0,
+            thrust,
+            thrust_body);
+        return message;
+    }) ?
+               Offboard::Result::Success :
+               Offboard::Result::ConnectionError;
+}
+
+Offboard::Result OffboardImpl::send_attitude_quaternion()
+{
+    const auto attitude_quaternion = [this]() {
+        std::lock_guard<std::mutex> lock(_mutex);
+        return _attitude_quaternion;
+    }();
+
+    const float q[4] = {attitude_quaternion.w, attitude_quaternion.x, attitude_quaternion.y, attitude_quaternion.z};
+    const float thrust = attitude_quaternion.thrust_value;
+    const uint8_t type_mask = (1 << 0) | (1 << 1) | (1 << 2); // Ignore body rates, use quaternion + scalar thrust
+    const float thrust_body[3] = {0.0f, 0.0f, 0.0f}; // All zeros for standard quadcopter attitude control
+
+    return _system_impl->queue_message([&](MavlinkAddress mavlink_address, uint8_t channel) {
+        mavlink_message_t message;
+        mavlink_msg_set_attitude_target_pack_chan(
+            mavlink_address.system_id,
+            mavlink_address.component_id,
+            channel,
+            &message,
+            static_cast<uint32_t>(_system_impl->get_time().elapsed_ms()),
+            _system_impl->get_system_id(),
+            _system_impl->get_autopilot_id(),
+            type_mask,
+            q,
+            0.0f, // body_roll_rate (ignored due to type_mask)
+            0.0f, // body_pitch_rate (ignored due to type_mask)  
+            0.0f, // body_yaw_rate (ignored due to type_mask)
             thrust,
             thrust_body);
         return message;
